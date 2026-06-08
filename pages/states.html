@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TxBD — Component States</title>
+<link href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Archivo:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/tokens.css">
+<link rel="stylesheet" href="../css/base.css">
+<link rel="stylesheet" href="../css/components.css">
+<link rel="stylesheet" href="../css/pages.css">
+<link rel="stylesheet" href="../css/import.css">
+<link rel="stylesheet" href="../css/states.css">
+</head>
+<body>
+<div class="states">
+
+  <div class="states__head">
+    <span class="eyebrow">Design System</span>
+    <h1 style="margin-top:var(--sp-3)">Component States &amp; Interactions</h1>
+    <p class="lead" style="margin-top:var(--sp-3);max-width:70ch">Default, hover, open, and active states rendered as real layers — build Figma component variants from these.</p>
+  </div>
+
+  <!-- Navigation -->
+  <div class="stgroup">
+    <div class="stgroup__title">Navigation</div>
+    <div class="stgroup__sub">Top-level link (default / hover) · mega menu (open) · dropdown (open)</div>
+    <div class="strow">
+      <div class="stcell"><span class="stcap">Link — Default</span><div class="stbox"><div class="navdemo"><span class="navdemo__link">Coins &amp; Redbacks</span></div></div></div>
+      <div class="stcell"><span class="stcap">Link — Hover</span><div class="stbox"><div class="navdemo"><span class="navdemo__link navdemo__link--hover">Coins &amp; Redbacks<span class="navdemo__ul"></span></span></div></div></div>
+      <div class="stcell"><span class="stcap">Dropdown — Open</span>
+        <div class="menu">
+          <a href="#"><span class="dot"></span>Why Use Us?</a>
+          <a href="#"><span class="dot"></span>Depository Administrator</a>
+          <a href="#"><span class="dot"></span>Texas Comptroller, Glenn A. Hegar</a>
+          <a href="#"><span class="dot"></span>About Depository Operator</a>
+        </div>
+      </div>
+    </div>
+    <div class="strow">
+      <div class="stcell"><span class="stcap">Mega Menu — Open</span>
+        <div class="mega"><div class="mega__inner">
+          <div class="mega__col">
+            <div class="mega__label">Commemorative Coins</div>
+            <a class="mega__link" href="#">The Commemorative Series <small>Program overview</small></a>
+            <a class="mega__link" href="#">State of Texas Lone Star Coins</a>
+            <a class="mega__link" href="#">2026 Collection</a>
+            <a class="mega__link mega__link--child" href="#">2026 1 oz Gold Lone Star</a>
+            <a class="mega__link mega__link--child" href="#">2026 ½ oz Gold Lone Star</a>
+            <a class="mega__link" href="#">2025 Collection</a>
+          </div>
+          <div class="mega__col">
+            <div class="mega__label">Modern Redbacks</div>
+            <a class="mega__link" href="#">5 Centigram Redback</a>
+            <a class="mega__link" href="#">20 Centigram Redback</a>
+            <a class="mega__link" href="#">100 Centigram Redback</a>
+            <a class="mega__link" href="#">View all Redbacks</a>
+          </div>
+          <div class="mega__col">
+            <div class="mega__label">Learn &amp; Buy</div>
+            <a class="mega__link" href="#">Meet the Designer <small>Joel Iskowitz</small></a>
+            <a class="mega__link" href="#">The Modern Redback Story</a>
+            <a class="mega__link" href="#">Where to Buy</a>
+            <a class="mega__link" href="#">FAQs</a>
+          </div>
+          <div class="mega__feature">
+            <span class="badge badge--new">New for 2026</span>
+            <img src="../assets/img/group-2026-coins.jpg" alt="">
+            <h4>The 2026 Lone Star Collection</h4>
+            <p>Lady Liberty beside the Texas Capitol, the new perennial design.</p>
+            <a href="#">Explore the collection ›</a>
+          </div>
+        </div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Buttons -->
+  <div class="stgroup">
+    <div class="stgroup__title">Buttons</div>
+    <div class="stgroup__sub">Variants in default and hover (elevation) states</div>
+    <div class="strow">
+      <div class="stcell"><span class="stcap">Primary — Default</span><a class="btn btn--primary">Where to Buy</a></div>
+      <div class="stcell"><span class="stcap">Primary — Hover</span><a class="btn btn--primary is-hover">Where to Buy</a></div>
+      <div class="stcell"><span class="stcap">Navy — Default</span><a class="btn btn--navy">Contact Us</a></div>
+      <div class="stcell"><span class="stcap">Navy — Hover</span><a class="btn btn--navy is-hover">Contact Us</a></div>
+      <div class="stcell"><span class="stcap">Outline — Default</span><a class="btn btn--outline">Find a Retailer</a></div>
+      <div class="stcell"><span class="stcap">Outline — Hover</span><a class="btn btn--outline is-hover" style="border-color:var(--navy-700)">Find a Retailer</a></div>
+    </div>
+  </div>
+
+  <!-- Badges & chips -->
+  <div class="stgroup">
+    <div class="stgroup__title">Badges, Chips &amp; Input</div>
+    <div class="strow">
+      <div class="stcell"><span class="stcap">Badges</span><div class="stbox"><div style="display:flex;gap:8px"><span class="badge badge--gold badge--dot">.9999 Gold</span><span class="badge badge--new">New</span><span class="badge badge--navy">Certi-Lock</span></div></div></div>
+      <div class="stcell"><span class="stcap">Chip — Default</span><span class="chip">Gold</span></div>
+      <div class="stcell"><span class="stcap">Chip — Active</span><span class="chip is-active">Gold</span></div>
+      <div class="stcell"><span class="stcap">Input — Default</span><div class="input-demo">Enter your email</div></div>
+      <div class="stcell"><span class="stcap">Input — Focus</span><div class="input-demo input-demo--focus">jon@example.com</div></div>
+    </div>
+  </div>
+
+  <!-- Cards -->
+  <div class="stgroup">
+    <div class="stgroup__title">Collection Card</div>
+    <div class="stgroup__sub">Default and hover (lift + gold border)</div>
+    <div class="strow">
+      <div class="stcell"><span class="stcap">Default</span>
+        <article class="card" style="width:300px">
+          <div class="card__media"><img src="../assets/img/coin-2026-gold-1oz-obv.jpg" alt=""></div>
+          <div class="card__body"><div class="card__tags"><span class="badge badge--gold">Gold</span></div><h3 class="card__title">2026 1 oz Gold Lone Star</h3><p class="card__meta">.9999 fine gold · 32 mm</p><a class="card__link">View details ›</a></div>
+        </article>
+      </div>
+      <div class="stcell"><span class="stcap">Hover</span>
+        <article class="card is-hover" style="width:300px">
+          <div class="card__media"><img src="../assets/img/coin-2026-gold-1oz-obv.jpg" alt=""></div>
+          <div class="card__body"><div class="card__tags"><span class="badge badge--gold">Gold</span></div><h3 class="card__title">2026 1 oz Gold Lone Star</h3><p class="card__meta">.9999 fine gold · 32 mm</p><a class="card__link">View details ›</a></div>
+        </article>
+      </div>
+    </div>
+  </div>
+
+  <!-- Retailer rows -->
+  <div class="stgroup">
+    <div class="stgroup__title">Authorized Retailer Row</div>
+    <div class="stgroup__sub">Default and hover (gold wash + filled action)</div>
+    <div class="strow">
+      <div class="stcell" style="width:360px"><span class="stcap">Default</span>
+        <div class="retailers"><div class="retailers__grid">
+          <a class="retailer"><span class="retailer__logo">A</span><span class="retailer__info"><span class="retailer__name">APMEX</span><span class="retailer__phone">1-800-375-9006</span></span><span class="retailer__visit">Visit ↗</span></a>
+        </div></div>
+      </div>
+      <div class="stcell" style="width:360px"><span class="stcap">Hover</span>
+        <div class="retailers"><div class="retailers__grid">
+          <a class="retailer is-hover"><span class="retailer__logo">A</span><span class="retailer__info"><span class="retailer__name">APMEX</span><span class="retailer__phone">1-800-375-9006</span></span><span class="retailer__visit">Visit ↗</span></a>
+        </div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Accordion -->
+  <div class="stgroup">
+    <div class="stgroup__title">Accordion</div>
+    <div class="stgroup__sub">Collapsed and expanded</div>
+    <div class="strow">
+      <div class="stcell" style="width:520px"><span class="stcap">Collapsed</span>
+        <div class="accordion"><div class="acc acc-closed"><button class="acc__head" type="button"><span class="acc__title">Secure Certi-Lock® Packaging</span><span class="acc__icon"></span></button><div class="acc__body"><div class="acc__body-inner"><p>Tamper-evident packaging.</p></div></div></div></div>
+      </div>
+      <div class="stcell" style="width:520px"><span class="stcap">Expanded</span>
+        <div class="accordion"><div class="acc is-open"><button class="acc__head" type="button"><span class="acc__title">Secure Certi-Lock® Packaging</span><span class="acc__icon"></span></button><div class="acc__body"><div class="acc__body-inner"><p>Available in specialized tamper-evident Certi-Lock® packaging, each coin is securely encapsulated to help protect its condition and verify authenticity through advanced digital technology.</p></div></div></div></div>
+      </div>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>

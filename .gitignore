@@ -1,0 +1,9 @@
+# dependencies
+node_modules/
+
+# generated build outputs (reproducible via export/ scripts)
+dist-import/
+export/out/
+
+# os
+.DS_Store

@@ -1,0 +1,12 @@
+{
+  "name": "txbd-commemorative",
+  "version": "1.0.0",
+  "private": true,
+  "description": "TxBD Commemorative Series — HTML/CSS design templates, exported to PDF for Magicul → Figma.",
+  "scripts": {
+    "pdf": "node export/generate-pdf.js"
+  },
+  "devDependencies": {
+    "playwright": "^1.48.0"
+  }
+}

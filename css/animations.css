@@ -1,0 +1,50 @@
+/* ============================================================
+   Animations & micro-interactions
+   Progressive enhancement: hiding only applies when JS is on
+   (html.has-js). PDF export adds html.force-reveal to show all.
+   ============================================================ */
+
+html { scroll-behavior: smooth; }
+
+/* ---- Reveal on scroll ---- */
+.has-js .reveal { opacity: 0; transform: translateY(22px); transition: opacity .7s cubic-bezier(.2,.7,.2,1), transform .7s cubic-bezier(.2,.7,.2,1); will-change: opacity, transform; }
+.has-js .reveal.is-visible { opacity: 1; transform: none; }
+
+/* staggered children */
+.has-js .reveal-stagger > * { opacity: 0; transform: translateY(20px); transition: opacity .6s ease, transform .6s cubic-bezier(.2,.7,.2,1); }
+.has-js .reveal-stagger.is-visible > * { opacity: 1; transform: none; }
+.has-js .reveal-stagger.is-visible > *:nth-child(1) { transition-delay: .04s; }
+.has-js .reveal-stagger.is-visible > *:nth-child(2) { transition-delay: .12s; }
+.has-js .reveal-stagger.is-visible > *:nth-child(3) { transition-delay: .20s; }
+.has-js .reveal-stagger.is-visible > *:nth-child(4) { transition-delay: .28s; }
+
+/* PDF / no-JS fallback: everything visible, no motion */
+.force-reveal .reveal,
+.force-reveal .reveal-stagger > * { opacity: 1 !important; transform: none !important; transition: none !important; }
+
+/* ---- Hero subtle parallax-in ---- */
+@keyframes floatIn { from { opacity: 0; transform: translateY(14px) scale(.99); } to { opacity: 1; transform: none; } }
+.has-js .hero__media { animation: floatIn 1s cubic-bezier(.2,.7,.2,1) both; }
+
+/* ---- Soft shimmer on the New badge ---- */
+@keyframes pulseGold { 0%,100% { box-shadow: 0 4px 12px rgba(186,6,48,.3); } 50% { box-shadow: 0 6px 20px rgba(186,6,48,.5); } }
+.badge--new { animation: pulseGold 3.2s ease-in-out infinite; }
+
+/* ---- Gallery thumb active pop ---- */
+.gthumb { transition: border-color .2s ease, transform .2s ease; cursor: pointer; }
+.gthumb:hover { transform: translateY(-2px); border-color: var(--gold-400); }
+
+/* ---- Eyebrow line draw ---- */
+.eyebrow::before { transition: width .4s ease; }
+
+/* ---- Focus-visible (accessibility) ---- */
+a:focus-visible, button:focus-visible, input:focus-visible, .mainnav__link:focus-visible {
+  outline: 2px solid var(--gold-600); outline-offset: 3px; border-radius: 3px;
+}
+
+/* ---- Reduced motion ---- */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation-duration: .001ms !important; animation-iteration-count: 1 !important; transition-duration: .001ms !important; }
+  .has-js .reveal, .has-js .reveal-stagger > * { opacity: 1 !important; transform: none !important; }
+}

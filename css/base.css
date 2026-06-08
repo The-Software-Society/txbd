@@ -1,0 +1,100 @@
+/* ============================================================
+   Base reset + typography + layout utilities
+   ============================================================ */
+
+*, *::before, *::after { box-sizing: border-box; }
+* { margin: 0; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  font-family: var(--font-body);
+  font-size: var(--fs-body);
+  line-height: var(--lh-body);
+  color: var(--color-ink);
+  background: var(--color-bg);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+img, svg, video { display: block; max-width: 100%; }
+img { height: auto; }
+
+a { color: inherit; text-decoration: none; }
+
+h1, h2, h3, h4 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  line-height: var(--lh-tight);
+  color: var(--navy-700);
+  letter-spacing: -0.01em;
+}
+h1 { font-size: var(--fs-h1); }
+h2 { font-size: var(--fs-h2); }
+h3 { font-size: var(--fs-h3); line-height: var(--lh-snug); }
+h4 { font-size: var(--fs-h4); font-family: var(--font-body); font-weight: 700; letter-spacing: 0; }
+
+p { line-height: var(--lh-body); }
+p + p { margin-top: var(--sp-4); }
+
+strong { font-weight: 700; color: var(--navy-700); }
+
+/* ---- Layout helpers ---- */
+.container {
+  width: 100%;
+  max-width: var(--container);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+.container--narrow { max-width: var(--container-narrow); }
+.container--wide { max-width: var(--container-wide); }
+
+.section { padding-block: var(--sp-24); }
+.section--tight { padding-block: var(--sp-16); }
+.section--tint { background: var(--color-surface-alt); }
+.section--paper { background: var(--color-bg); }
+
+/* ---- Eyebrow / labels ---- */
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sp-2);
+  font-family: var(--font-body);
+  font-size: var(--fs-eyebrow);
+  font-weight: 700;
+  letter-spacing: var(--ls-eyebrow);
+  text-transform: uppercase;
+  color: var(--gold-600);
+}
+.eyebrow::before {
+  content: "";
+  width: 24px; height: 2px;
+  background: var(--gold-500);
+}
+.eyebrow--center::before { display: none; }
+
+/* ---- Lead paragraph ---- */
+.lead {
+  font-size: var(--fs-lead);
+  line-height: 1.55;
+  color: var(--color-ink-soft);
+}
+
+/* ---- Section heading block ---- */
+.heading { max-width: 60ch; }
+.heading--center { margin-inline: auto; text-align: center; }
+.heading__title { margin-top: var(--sp-3); }
+.heading__sub { margin-top: var(--sp-4); color: var(--color-ink-soft); }
+
+/* ---- Dividers ---- */
+.rule { height: 1px; background: var(--color-border-soft); border: 0; }
+.rule--gold {
+  height: 3px; width: 56px; border: 0; border-radius: 2px;
+  background: linear-gradient(90deg, var(--gold-500), var(--gold-700));
+}
+
+/* ---- Utility ---- */
+.text-center { text-align: center; }
+.muted { color: var(--color-ink-muted); }
+.stack > * + * { margin-top: var(--sp-4); }
+.stack-lg > * + * { margin-top: var(--sp-8); }

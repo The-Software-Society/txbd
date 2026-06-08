@@ -1,0 +1,43 @@
+/* ============================================================
+   import.css, overrides that make the standalone HTML import
+   cleanly into html.to.design (static, no JS, Figma-bound).
+   Loaded LAST. Neutralizes hover/animation artifacts, hidden
+   off-canvas panels, and CSS background-images the importer
+   cannot read.
+   ============================================================ */
+
+/* 1. Kill transform-hidden pseudos (importer ignores transforms, so the
+      button sheen + nav underline render as smears). display:none is honored. */
+.btn::after { display: none !important; }
+.mainnav__link::after { display: none !important; }
+
+/* 2. Solid, static header (drop backdrop-filter + sticky) */
+.site-header { position: static !important; background: var(--paper) !important;
+  -webkit-backdrop-filter: none !important; backdrop-filter: none !important; }
+
+/* 3. Remove interactive-only / off-canvas elements so the importer
+      does not pull hidden dropdowns, drawers, or mobile-only bits */
+.mega, .menu, .drawer, .drawer-backdrop, .hamburger, .buybar { display: none !important; }
+.mainnav__link .chev { display: none !important; }
+.mainnav__link { cursor: default; }
+
+/* 4. The eyebrow decorative line stacks oddly on import, drop it */
+.eyebrow::before { display: none !important; }
+
+/* 5. Accordions + disclaimer: show content (toggling does not carry to Figma) */
+.acc__body, .disclaimer__body { max-height: none !important; overflow: visible !important; }
+.acc__icon { background: var(--navy-700) !important; color: #fff !important; border-color: var(--navy-700) !important; position: relative; }
+/* the pseudo +/- relies on a CSS transform the importer ignores; use real bars instead.
+   Bars are injected into .acc__icon by the build script. Collapsed = plus, expanded = minus. */
+.acc__icon::before, .acc__icon::after { display: none !important; }
+.acc__icon .bar-h, .acc__icon .bar-v { position: absolute; background: #fff; border-radius: 2px; }
+.acc__icon .bar-h { width: 12px; height: 2px; top: calc(50% - 1px); left: calc(50% - 6px); }
+.acc__icon .bar-v { width: 2px; height: 12px; top: calc(50% - 6px); left: calc(50% - 1px); }
+.acc.is-open .acc__icon .bar-v { display: none; }            /* expanded = minus */
+.disclaimer .chev { transform: rotate(180deg) !important; }
+
+/* 6. Reveal elements fully visible (no has-js anyway; belt and suspenders) */
+.reveal, .reveal-stagger > * { opacity: 1 !important; transform: none !important; }
+
+/* 7. Contact-banner media becomes a real <img> (CSS background-image is dropped) */
+img.contact-banner__media { width: 100%; height: 100%; object-fit: cover; display: block; }

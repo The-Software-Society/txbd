@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TxBD Commemorative, Design System</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Archivo:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/tokens.css">
+<link rel="stylesheet" href="../css/base.css">
+<link rel="stylesheet" href="../css/components.css">
+<link rel="stylesheet" href="../css/pages.css">
+<style>
+  .swatches { display:grid; grid-template-columns:repeat(4,1fr); gap:var(--sp-4); }
+  .sw { border:1px solid var(--color-border-soft); border-radius:var(--radius-md); overflow:hidden; }
+  .sw__chip { height:84px; }
+  .sw__meta { padding:var(--sp-3) var(--sp-4); }
+  .sw__name { font-weight:700; font-size:var(--fs-sm); color:var(--navy-700); }
+  .sw__hex { font-size:var(--fs-xs); color:var(--color-ink-muted); font-family:ui-monospace,monospace; }
+  .typerow { display:flex; align-items:baseline; gap:var(--sp-6); padding-block:var(--sp-3); border-bottom:1px solid var(--color-border-soft); }
+  .typerow .tag { width:120px; font-size:var(--fs-xs); color:var(--color-ink-muted); text-transform:uppercase; letter-spacing:var(--ls-caps); flex:none; }
+  .block { margin-bottom:var(--sp-16); }
+  .block > h2 { margin-bottom:var(--sp-6); padding-bottom:var(--sp-3); border-bottom:2px solid var(--gold-500); display:inline-block; }
+  .demo { display:flex; gap:var(--sp-3); flex-wrap:wrap; align-items:center; }
+  .grid2 { display:grid; grid-template-columns:1fr 1fr; gap:var(--sp-8); align-items:start; }
+  .grid3 { display:grid; grid-template-columns:repeat(3,1fr); gap:var(--sp-6); align-items:start; }
+  .label { font-size:var(--fs-xs); text-transform:uppercase; letter-spacing:var(--ls-eyebrow); color:var(--color-ink-muted); margin-bottom:var(--sp-3); }
+</style>
+</head>
+<body>
+<div class="container" style="padding-block:var(--sp-16)">
+
+  <div class="heading" style="margin-bottom:var(--sp-12)">
+    <span class="eyebrow">Design System</span>
+    <h1 class="heading__title">Commemorative Series, Tokens &amp; Components</h1>
+    <p class="heading__sub">Import this page first to seed Figma color &amp; text styles, then componentize the blocks below. Anchored to the approved brand style guide.</p>
+  </div>
+
+  <!-- Colors -->
+  <div class="block">
+    <h2>Color</h2>
+    <div class="swatches">
+      <div class="sw"><div class="sw__chip" style="background:#001F3D"></div><div class="sw__meta"><div class="sw__name">Navy 700 · Primary</div><div class="sw__hex">#001F3D</div></div></div>
+      <div class="sw"><div class="sw__chip" style="background:#06121E"></div><div class="sw__meta"><div class="sw__name">Navy 900</div><div class="sw__hex">#06121E</div></div></div>
+      <div class="sw"><div class="sw__chip" style="background:#F0C030"></div><div class="sw__meta"><div class="sw__name">Gold 500 · Accent</div><div class="sw__hex">#F0C030</div></div></div>
+      <div class="sw"><div class="sw__chip" style="background:#7E6018"></div><div class="sw__meta"><div class="sw__name">Gold 700 · Bronze</div><div class="sw__hex">#7E6018</div></div></div>
+      <div class="sw"><div class="sw__chip" style="background:#BA0630"></div><div class="sw__meta"><div class="sw__name">Red 600 · Texas</div><div class="sw__hex">#BA0630</div></div></div>
+      <div class="sw"><div class="sw__chip" style="background:#485460"></div><div class="sw__meta"><div class="sw__name">Slate 600</div><div class="sw__hex">#485460</div></div></div>
+      <div class="sw"><div class="sw__chip" style="background:#B4BAC0"></div><div class="sw__meta"><div class="sw__name">Gray 300 · Border</div><div class="sw__hex">#B4BAC0</div></div></div>
+      <div class="sw"><div class="sw__chip" style="background:#FBFAF7;border-bottom:1px solid #eee"></div><div class="sw__meta"><div class="sw__name">Paper · Background</div><div class="sw__hex">#FBFAF7</div></div></div>
+    </div>
+  </div>
+
+  <!-- Type -->
+  <div class="block">
+    <h2>Typography</h2>
+    <div class="typerow"><span class="tag">Display 72</span><span style="font-family:var(--font-display);font-size:72px;font-weight:700;color:var(--navy-700)">Texas</span></div>
+    <div class="typerow"><span class="tag">H1 · 52</span><span style="font-family:var(--font-display);font-size:52px;font-weight:700;color:var(--navy-700)">State of Texas Lone Star</span></div>
+    <div class="typerow"><span class="tag">H2 · 36</span><span style="font-family:var(--font-display);font-size:36px;font-weight:700;color:var(--navy-700)">Commemorative Coins</span></div>
+    <div class="typerow"><span class="tag">H3 · 24</span><span style="font-family:var(--font-display);font-size:24px;font-weight:600;color:var(--navy-700)">The Enduring Reverse</span></div>
+    <div class="typerow"><span class="tag">Lead · 21</span><span style="font-size:21px;color:var(--slate-600)">Official precious metal products issued by the State of Texas.</span></div>
+    <div class="typerow"><span class="tag">Body · 17</span><span style="font-size:17px;color:var(--slate-600)">Struck in .9999 fine gold, capturing the strength and heritage of the Lone Star State.</span></div>
+    <div class="typerow"><span class="tag">Eyebrow · 13</span><span class="eyebrow" style="margin:0">Designed by a Legend</span></div>
+  </div>
+
+  <!-- Buttons + badges + chips + form -->
+  <div class="block">
+    <h2>Buttons, Badges, Chips &amp; Forms</h2>
+    <div class="demo" style="margin-bottom:var(--sp-6)">
+      <a class="btn btn--primary">Where to Buy</a>
+      <a class="btn btn--navy">Contact Us</a>
+      <a class="btn btn--outline">Find a Retailer</a>
+      <a class="btn btn--ghost">Create Account</a>
+      <a class="btn btn--primary btn--lg">Buy from Authorized Retailers</a>
+    </div>
+    <div class="demo" style="margin-bottom:var(--sp-6)">
+      <span class="badge badge--gold badge--dot">.9999 Fine Gold</span>
+      <span class="badge badge--silver">Silver</span>
+      <span class="badge badge--new">New for 2026</span>
+      <span class="badge badge--navy">Certi-Lock</span>
+    </div>
+    <div class="demo" style="margin-bottom:var(--sp-6)">
+      <span class="chip chip--active">All</span><span class="chip">Gold</span><span class="chip">Silver</span><span class="chip">Redbacks</span>
+    </div>
+    <div style="max-width:420px;background:var(--navy-900);padding:var(--sp-5);border-radius:var(--radius-md)">
+      <form class="subscribe" onsubmit="return false"><input type="email" placeholder="Enter your email"><button class="btn btn--primary" type="submit">Subscribe</button></form>
+    </div>
+  </div>
+
+  <!-- Cards -->
+  <div class="block">
+    <h2>Cards</h2>
+    <div class="grid3">
+      <article class="card">
+        <div class="card__media"><img src="../assets/img/coin-2026-gold-1oz-obv.jpg" alt=""></div>
+        <div class="card__body">
+          <div class="card__tags"><span class="badge badge--gold">Gold</span><span class="badge badge--silver">1 oz</span></div>
+          <h3 class="card__title">2026 1 oz Gold Lone Star</h3>
+          <p class="card__meta">.9999 fine gold · 32 mm</p>
+          <a class="card__link">View details ›</a>
+        </div>
+      </article>
+      <article class="card">
+        <div class="card__media card__media--photo"><img src="../assets/img/group-2025-coins.jpg" alt=""></div>
+        <div class="card__body">
+          <div class="card__tags"><span class="badge badge--silver">Inaugural</span></div>
+          <h3 class="card__title">The 2025 Collection</h3>
+          <p class="card__meta">The historic inaugural release.</p>
+          <a class="card__link">Explore 2025 ›</a>
+        </div>
+      </article>
+      <div class="stats" style="border:1px solid var(--color-border-soft);border-radius:var(--radius-lg);grid-template-columns:1fr 1fr">
+        <div class="stat"><div class="stat__num">2025</div><div class="stat__label">Inaugural year</div></div>
+        <div class="stat"><div class="stat__num"><em>.9999</em></div><div class="stat__label">Fine gold</div></div>
+        <div class="stat" style="border-left:0;border-top:1px solid var(--color-border-soft)"><div class="stat__num">8</div><div class="stat__label">Products</div></div>
+        <div class="stat" style="border-top:1px solid var(--color-border-soft)"><div class="stat__num">6</div><div class="stat__label">Retailers</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Spec + Accordion + Retailer -->
+  <div class="block">
+    <h2>Spec Table, Accordion &amp; Retailers</h2>
+    <div class="grid3">
+      <div>
+        <div class="label">Spec table</div>
+        <div class="specs">
+          <div class="specs__row"><div class="specs__k">Metal</div><div class="specs__v">.9999 gold</div></div>
+          <div class="specs__row"><div class="specs__k">Weight</div><div class="specs__v">1 troy oz</div></div>
+          <div class="specs__row"><div class="specs__k">Diameter</div><div class="specs__v">32 mm</div></div>
+          <div class="specs__row"><div class="specs__k">Finish</div><div class="specs__v">Bullion</div></div>
+        </div>
+        <div class="label" style="margin-top:var(--sp-6)">Accordion</div>
+        <div class="accordion">
+          <div class="acc is-open"><button class="acc__head" type="button"><span class="acc__title">Certi-Lock&reg; Packaging</span><span class="acc__icon"></span></button><div class="acc__body" style="max-height:none"><div class="acc__body-inner"><p>Tamper-evident packaging that verifies authenticity through digital technology.</p></div></div></div>
+          <div class="acc"><button class="acc__head" type="button"><span class="acc__title">The Enduring Reverse</span><span class="acc__icon"></span></button></div>
+        </div>
+      </div>
+      <div style="grid-column:span 2">
+        <div class="label">Authorized retailers block</div>
+        <div class="retailers">
+          <div class="retailers__head"><h3>Buy from Authorized Retailers</h3><p>Available through the State&rsquo;s dealer network.</p></div>
+          <div class="retailers__grid">
+            <a class="retailer"><span class="retailer__logo">A</span><span class="retailer__info"><span class="retailer__name">APMEX</span><span class="retailer__phone">1-800-375-9006</span></span><span class="retailer__visit">Visit <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 17L17 7M9 7h8v8"/></svg></span></a>
+            <a class="retailer"><span class="retailer__logo">UG</span><span class="retailer__info"><span class="retailer__name">U.S. Gold Bureau</span><span class="retailer__phone">1-800-775-3504</span></span><span class="retailer__visit">Visit <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 17L17 7M9 7h8v8"/></svg></span></a>
+          </div>
+          <div class="retailers__foot"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l8 4v6c0 5-3.5 8-8 10-4.5-2-8-5-8-10V6z"/></svg> Independently operated. Prices &amp; availability vary.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Navigation + Footer note -->
+  <div class="block">
+    <h2>Navigation &amp; Footer</h2>
+    <p class="muted" style="margin-bottom:var(--sp-4)">Full glass header with mega-menu, modern multi-column footer with newsletter + social, and a mobile drawer are implemented on the live pages (Home, Product, Content). Import those frames to capture the header/footer components.</p>
+    <div class="demo">
+      <span class="badge badge--navy">Header · Mega-nav</span>
+      <span class="badge badge--navy">Footer · Newsletter</span>
+      <span class="badge badge--navy">Mobile · Drawer</span>
+      <span class="badge badge--navy">Contact Banner</span>
+      <span class="badge badge--navy">Where-to-Buy Band</span>
+      <span class="badge badge--navy">FAQ</span>
+      <span class="badge badge--navy">Timeline</span>
+      <span class="badge badge--navy">Split Feature</span>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>

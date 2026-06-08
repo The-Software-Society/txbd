@@ -1,0 +1,7 @@
+{
+  "name": "TxBD Commemorative — Homepage Builder",
+  "id": "txbd-commemorative-homepage-builder",
+  "api": "1.0.0",
+  "main": "code.js",
+  "editorType": ["figma"]
+}
