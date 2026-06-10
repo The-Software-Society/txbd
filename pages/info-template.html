@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Info Page Template — Block Options — Texas Bullion Depository</title>
+<link href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Archivo:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/tokens.css">
+<link rel="stylesheet" href="../css/base.css">
+<link rel="stylesheet" href="../css/components.css">
+<link rel="stylesheet" href="../css/pages.css">
+<link rel="stylesheet" href="../css/responsive.css">
+<style>
+  .kit__intro { padding: clamp(48px,6vw,88px) var(--gutter); background: var(--onyx-900); color: var(--color-on-dark); }
+  .kit__intro .eyebrow { color: var(--gold-400); }
+  .kit__intro h1 { color: #fff; margin-top: var(--sp-3); max-width: 22ch; }
+  .kit__intro p { color: var(--color-on-dark-muted); margin-top: var(--sp-4); max-width: 60ch; font-size: var(--fs-lead); }
+  .kit__label { background: var(--onyx-800); padding: 13px var(--gutter); display: flex; gap: 14px; align-items: baseline; flex-wrap: wrap; border-top: 1px solid var(--onyx-600); }
+  .kit__label b { color: #fff; font-family: var(--font-body); font-weight: 700; font-size: 12px; letter-spacing: .14em; text-transform: uppercase; }
+  .kit__label span { color: var(--color-on-dark-muted); font-size: 13px; }
+  .kit__label span em { color: var(--gold-400); font-style: normal; font-weight: 600; }
+</style>
+</head>
+<body>
+
+<!-- ===== Intro ===== -->
+<header class="kit__intro">
+  <div class="container">
+    <span class="eyebrow eyebrow--center" style="justify-content:flex-start">Info Page Template</span>
+    <h1>Content Blocks for Information Pages</h1>
+    <p>A kit of reusable blocks for educational / informational pages. Each block below is labeled with what it's <em>for</em> — mix and match them to build any info page. Every block is responsive and uses the brand's black + gold system.</p>
+  </div>
+</header>
+
+<!-- 1. HERO -->
+<div class="kit__label"><b>① Info Hero</b><span><em>Use for:</em> the page opener — a bold headline + lead, with coins or vault imagery worked into the background.</span></div>
+<section class="homehero">
+  <div class="homehero__bg"><img src="../assets/img/group-2026-coins.jpg" alt=""></div>
+  <div class="container homehero__inner">
+    <span class="eyebrow eyebrow--center" style="color:var(--gold-400);justify-content:center">Section Eyebrow</span>
+    <h1>A Striking Page Headline</h1>
+    <p class="homehero__lead">One or two sentences that frame the page and set the tone for everything below.</p>
+    <div class="homehero__actions"><a class="btn btn--primary btn--lg" href="#">Primary CTA</a><a class="btn btn--ghost-light btn--lg" href="#">Secondary</a></div>
+  </div>
+</section>
+
+<!-- 2. LEAD -->
+<div class="kit__label"><b>② Lead / Value Statement</b><span><em>Use for:</em> a centered intro paragraph that states the page's core message before the detail.</span></div>
+<section class="section">
+  <div class="container">
+    <div class="heading heading--center text-center" style="margin-inline:auto">
+      <span class="eyebrow eyebrow--center">Eyebrow</span>
+      <h2 class="heading__title">A Clear, Confident Section Heading</h2>
+    </div>
+    <p class="lead text-center" style="max-width:74ch;margin:var(--sp-8) auto 0">The lead paragraph carries the key idea in a sentence or two. Keep it short and bold; move supporting detail into the blocks that follow so the page never becomes a wall of text.</p>
+  </div>
+</section>
+
+<!-- 3. FEATURE TRIO -->
+<div class="kit__label"><b>③ Feature Trio</b><span><em>Use for:</em> three (or two) key value-props or differentiators — icon + heading + one line each.</span></div>
+<section class="section section--tint">
+  <div class="container">
+    <div class="feature-grid">
+      <article class="feature"><div class="feature__num">01</div><h3>Point One</h3><p>A short supporting line that explains this value or feature in plain language.</p></article>
+      <article class="feature"><div class="feature__num">02</div><h3>Point Two</h3><p>A short supporting line that explains this value or feature in plain language.</p></article>
+      <article class="feature"><div class="feature__num">03</div><h3>Point Three</h3><p>A short supporting line that explains this value or feature in plain language.</p></article>
+    </div>
+  </div>
+</section>
+
+<!-- 4. STAT BAND -->
+<div class="kit__label"><b>④ Stat Band</b><span><em>Use for:</em> proof points / numbers at a glance — establishment year, rankings, locations.</span></div>
+<section class="section" style="background:var(--onyx-900);padding-block:var(--sp-12)">
+  <div class="container">
+    <div class="stats stats--dark stats--band">
+      <div class="stat"><div class="stat__num">2015</div><div class="stat__label">Caption</div></div>
+      <div class="stat"><div class="stat__num"><em>1st</em></div><div class="stat__label">Caption</div></div>
+      <div class="stat"><div class="stat__num">100%</div><div class="stat__label">Caption</div></div>
+      <div class="stat"><div class="stat__num">Texas</div><div class="stat__label">Caption</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- 5. SPLIT FEATURE -->
+<div class="kit__label"><b>⑤ Split Feature</b><span><em>Use for:</em> a story beat — a real photo on one side, a heading + paragraph + checklist on the other. Image bleeds to the edge.</span></div>
+<section class="section">
+  <div class="container container--wide">
+    <div class="split split--bleed">
+      <div class="split__media"><img src="../assets/img/group-2026-coins.jpg" alt=""></div>
+      <div class="split__body">
+        <span class="eyebrow">Eyebrow</span>
+        <h2>A Section That Tells a Story</h2>
+        <p>A paragraph of supporting narrative. Pair it with a strong, real photograph to make dense subjects feel tangible.</p>
+        <ul class="split__list">
+          <li><svg class="ico" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.7 6.6L22 9.3l-5 4.7 1.3 7L12 17.8 5.7 21 7 14 2 9.3l7.3-.7z"/></svg><span><b>Bold key point</b> with a short explanation.</span></li>
+          <li><svg class="ico" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.7 6.6L22 9.3l-5 4.7 1.3 7L12 17.8 5.7 21 7 14 2 9.3l7.3-.7z"/></svg><span><b>Bold key point</b> with a short explanation.</span></li>
+        </ul>
+        <a class="btn btn--onyx" style="margin-top:var(--sp-8)" href="#">Call to Action</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 6. PULL QUOTE -->
+<div class="kit__label"><b>⑥ Pull Quote</b><span><em>Use for:</em> an official statement or testimonial — e.g., a governor's quote — set large for emphasis.</span></div>
+<section class="section section--tint">
+  <div class="container">
+    <div class="quote">
+      <span class="quote__mark">&ldquo;</span>
+      <p class="quote__text">A memorable quote from an official, expert, or partner that lends authority and emotion to the page.</p>
+      <p class="quote__by">Attribution · Title</p>
+    </div>
+  </div>
+</section>
+
+<!-- 7. TIMELINE -->
+<div class="kit__label"><b>⑦ Timeline</b><span><em>Use for:</em> history or milestones in sequence — founding, releases, what's ahead.</span></div>
+<section class="section">
+  <div class="container">
+    <div class="timeline">
+      <div class="tl"><div class="tl__year">2015</div><div class="tl__rail"><h3 class="tl__title">A Milestone</h3><p style="color:var(--color-ink-soft)">What happened and why it matters, in two or three sentences.</p></div></div>
+      <div class="tl"><div class="tl__year">2026</div><div class="tl__rail"><h3 class="tl__title">A Milestone</h3><p style="color:var(--color-ink-soft)">What happened and why it matters, in two or three sentences.</p></div></div>
+      <div class="tl"><div class="tl__year" style="color:var(--gray-400)">Ahead</div><div class="tl__rail"><h3 class="tl__title">What's Next</h3><p style="color:var(--color-ink-soft)">A forward-looking note about where the program is heading.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- 8. CALLOUT -->
+<div class="kit__label"><b>⑧ Callout / Highlight</b><span><em>Use for:</em> a single important note you want to stand apart — trust, legal, or a key fact.</span></div>
+<section class="section">
+  <div class="container">
+    <div class="callout">
+      <div><h4>A Highlighted Statement</h4><p>One or two sentences that deserve to stand apart from the body copy.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- 9. MEDIA BAND -->
+<div class="kit__label"><b>⑨ Media Band</b><span><em>Use for:</em> a gallery of real photography or video stills to add life — events, vault, product in context.</span></div>
+<section class="section section--tint">
+  <div class="container container--wide">
+    <div class="media-band__grid">
+      <div class="media-band__item media-band__item--tall"><img src="../assets/img/joel-iskowitz.jpg" alt="Designer Joel Iskowitz" style="object-position:center 22%"><span class="media-band__cap"><small>The Designer</small>Joel Iskowitz</span></div>
+      <div class="media-band__item"><img src="../assets/img/lifestyle-coins-notes.png" alt="Coins and gold notes"><span class="media-band__cap"><small>Tangible Value</small>Coins &amp; redbacks</span></div>
+      <div class="media-band__item"><img src="../assets/img/lifestyle-redbacks-hat.png" alt="Texas heritage"><span class="media-band__cap"><small>Heritage</small>Texas tradition</span></div>
+      <div class="media-band__item media-band__item--wide"><img src="../assets/img/group-2026-coins.jpg" alt="The 2026 collection"><span class="media-band__cap"><small>State of Texas</small>The 2026 collection</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- 10. DOCUMENT LIST -->
+<div class="kit__label"><b>⑩ Document / Link List</b><span><em>Use for:</em> grouped resources — accounts, schedules, policies, support — instead of a long footer dump.</span></div>
+<section class="section">
+  <div class="container">
+    <div class="doclist">
+      <div class="doclist__col"><h4>Accounts</h4><a href="#">Types of Storage Accounts <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 17L17 7M9 7h8v8"/></svg></a><a href="#">Items Required to Open <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 17L17 7M9 7h8v8"/></svg></a><a href="#">Account Agreement <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 17L17 7M9 7h8v8"/></svg></a></div>
+      <div class="doclist__col"><h4>Schedules</h4><a href="#">Pricing / Fee Schedule <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 17L17 7M9 7h8v8"/></svg></a><a href="#">Timeline of Releases <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 17L17 7M9 7h8v8"/></svg></a><a href="#">About Leander, Texas <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 17L17 7M9 7h8v8"/></svg></a></div>
+      <div class="doclist__col"><h4>Policies</h4><a href="#">Website User Agreement <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 17L17 7M9 7h8v8"/></svg></a><a href="#">Privacy Policy <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 17L17 7M9 7h8v8"/></svg></a><a href="#">Link Policy <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 17L17 7M9 7h8v8"/></svg></a></div>
+      <div class="doclist__col"><h4>Support</h4><a href="#">Frequently Asked Questions <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 17L17 7M9 7h8v8"/></svg></a><a href="#">Contact Us <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 17L17 7M9 7h8v8"/></svg></a></div>
+    </div>
+  </div>
+</section>
+
+<!-- 11. FAQ -->
+<div class="kit__label"><b>⑪ FAQ Accordion</b><span><em>Use for:</em> common questions — keeps long answers tucked away until needed.</span></div>
+<section class="section section--tint">
+  <div class="container">
+    <div class="faq">
+      <div class="faq__aside"><span class="eyebrow">Good to Know</span><h2>Frequently Asked Questions</h2><p>A short intro and a link to contact the team.</p></div>
+      <div class="accordion">
+        <div class="acc is-open"><button class="acc__head" type="button"><span class="acc__title">A common question?</span><span class="acc__icon"></span></button><div class="acc__body"><div class="acc__body-inner"><p>A clear, concise answer to the question, only shown when expanded.</p></div></div></div>
+        <div class="acc"><button class="acc__head" type="button"><span class="acc__title">Another common question?</span><span class="acc__icon"></span></button><div class="acc__body"><div class="acc__body-inner"><p>A clear, concise answer to the question, only shown when expanded.</p></div></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 12. CTA BAND -->
+<div class="kit__label"><b>⑫ CTA Band</b><span><em>Use for:</em> the closing call — contact, account, or "where to buy." Gold for warmth, or dark for gravity.</span></div>
+<section class="section">
+  <div class="container">
+    <div class="contact-banner">
+      <div class="contact-banner__inner">
+        <div class="contact-banner__text">
+          <span class="eyebrow" style="color:var(--onyx-700)">Eyebrow</span>
+          <h2 style="margin-top:var(--sp-3)">A Closing Call to Action</h2>
+          <p>One line inviting the visitor to take the next step.</p>
+          <div class="contact-banner__actions"><a class="btn btn--onyx btn--lg" href="#">Primary</a><a class="btn btn--outline btn--lg" href="#" style="border-color:var(--onyx-700)">Secondary</a></div>
+        </div>
+        <div class="contact-banner__media" style="background-image:url('../assets/img/group-2026-coins.jpg')"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+</body>
+</html>

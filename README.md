@@ -1,98 +1,70 @@
-# TxBD Commemorative Series, Design Templates (Phase 1)
+# TxBD Commemorative Series — Design Templates
 
-HTML/CSS design templates for the **Texas Bullion Depository, State of Texas Commemorative
-Series**. Built in code, exported to print-perfect PDFs, then converted to an editable Figma file via
-**Magicul (PDF → Figma)**. Final deliverable = a Figma file of reusable templates + components.
+Design system + page templates for the **Texas Bullion Depository — State of Texas Commemorative
+Series**. Built in HTML/CSS, delivered to Figma via **html.to.design** (a single `.zip` import).
 
-## What's in Phase 1 (the "first look")
-- **Design system**, `css/tokens.css` (brand palette/type/spacing, sampled from the approved style
-  guide) + `pages/tokens.html` (a swatch/component seed page).
-- **Global components**, header nav, navy footer, **Authorized-Retailers block**, product cards,
-  button set, spec table, accordion, collapsible disclaimer, contact banner, breadcrumb, timeline.
-- **Two flagship templates** (desktop 1440 + mobile 390):
-  - `pages/product-2026-1oz-gold.html`, Product Detail (gallery, specs-first, sticky retailer CTA,
-    progressive-disclosure legal, related variants).
-  - `pages/content-commemorative-series.html`, Content / Educational (hero, two product lines,
-    heritage timeline, designer cross-link).
+## Brand
+- **Palette:** true black (**Onyx** `#18181B` / `#08080A`) + **gold** (`#F0C030`) on warm paper
+  (`#FBFAF7`). Warm-neutral grays, no blue, no red.
+- **Type:** **Crimson Text** (display serif) + **Archivo** (body sans) — the approved brand fonts,
+  both free Google fonts present in Figma.
+- **Iconography:** heritage/typographic — gold lone-star marks, gold serif numerals, gold rules;
+  generic UI icons kept only for functional affordances.
 
-Phase 2 reserves the remaining 3 template families (Collection, Hub, Where-to-Buy), all remaining
-page instances × responsive, and final Figma library polish + revisions.
+## Pages (`pages/`)
+| File | What it is |
+|---|---|
+| `home.html` | Homepage — hero, collections, splits, FAQ, where-to-buy |
+| `product-2026-1oz-gold.html` | Product Detail — gallery, specs, retailer block, **designer band** |
+| `first-in-class.html` | Info page example ("State Oversight / HB 483") built from the kit |
+| `info-template.html` | **Info / Educational page template** — labeled block kit ("the options") |
+| `tokens.html` | Brand guidelines — color + type + component reference |
+| `states.html` | Component states & interactions (hover / open / active) |
 
-## Folder structure
+## Structure
 ```
 txbd-commemorative/
-├── css/            tokens, base, components, pages, responsive
-├── pages/          tokens.html + the two flagship templates
-├── assets/img/     optimized coin/lifestyle/designer imagery
-├── export/
-│   ├── generate-pdf.js   Playwright → one tall PDF per page per breakpoint
-│   └── out/              generated PDFs (upload these to Magicul)
-└── package.json
+├── css/         tokens · base · components · pages · responsive · animations · import · states
+├── pages/       the templates above
+├── assets/img/  optimized coin / lifestyle / depository imagery
+├── js/app.js    accordions, mega-nav, drawer, reveal-on-scroll (live preview only)
+├── export/      build scripts (see below)
+└── figma-plugin/ native Figma builder (alternative to the zip route)
 ```
+
+## Deliver to Figma (primary route)
+```bash
+python3 export/build-zip.py        # -> txbd-figma-import.zip  (desktop + forced-mobile pages)
+```
+In **html.to.design** → **File tab → upload the .zip**, viewport **Desktop / 1440**. One import brings
+in every page (the mobile pages are hard-framed to 390 so they import as phone layouts in the same
+pass). The builder inlines an import-friendly layer (`css/import.css`): flat nav, no button sheen,
+accordions shown open with real ± bars, banners as real `<img>`, optimized assets.
 
 ## Preview locally
-Open `pages/*.html` directly in a browser, or serve the folder:
 ```bash
-python3 -m http.server 8080   # then visit http://localhost:8080/pages/
+python3 -m http.server 8080 --bind 127.0.0.1   # then open:
+#   http://localhost:8080/            index — links to every page
+#   http://localhost:8080/board.html  board view — all pages, desktop + mobile, as Figma-style frames
 ```
+The board must be opened over the local server (not `file://`) — it reads each page's height through
+same-origin iframe access.
 
-## Regenerate the PDFs
-```bash
-npm install
-npx playwright install chromium   # first time only
-npm run pdf                        # writes export/out/*.pdf
-```
-Output: `<page>--desktop-1440.pdf` and `<page>--mobile-390.pdf` for each page.
+## Other build script (`export/`)
+- `build-plugin.py` → `figma-plugin/code.js` — an alternative route: a Figma plugin that builds the
+  homepage as **native layers** (color/text styles, auto-layout, components) instead of importing
+  HTML. Optional; the zip is the primary delivery.
 
-### Why these export settings (for clean Magicul → Figma)
-- `emulateMedia('screen')`, converts the real on-screen responsive design (not a stripped print view).
-- **One PDF page = one full design**, page height = full `scrollHeight`, so each design becomes a
-  single Figma frame with no pagination splits.
-- `printBackground: true`, keeps all brand fills (navy header, gold banners).
-- `margin: 0`, the PDF page size equals the design size → correct Figma frame dimensions.
-- Waits on `document.fonts.ready`, Playfair Display + Inter render and are subset-embedded; text
-  stays **selectable** (verified: ToUnicode CMaps present in output).
-
-## Step 1, Convert with Magicul (PDF → Figma)
-1. Go to Magicul → **PDF to Figma**. Upload from `export/out/`. Convert **desktop** files first,
-   then mobile (one design = one frame).
-2. Open the generated `.fig` / Figma file. Confirm:
-   - Text is **editable** (not outlined). Both fonts are standard Google fonts, if Magicul outlines
-     any text, select it in Figma and re-apply **Playfair Display** (display) or **Inter** (body).
-   - Brand colors match the tokens below; images came through crisp.
-3. If any single page imports poorly, re-run it through a fallback importer (`pdf.to.design` by
-   divRIOTS, Codia AI PDF, or Importrix), same PDF, just a different converter.
-
-## Step 2, Figma cleanup → reusable library (Phase 1 deliverable)
-Magicul output is **absolutely positioned** (PDF has no layout semantics), so rebuild the system:
-1. **Seed styles** from the `tokens` frame, create Figma color styles + text styles:
-   - Navy `#001F3D`, Navy-900 `#06121E`, Gold `#F0C030`, Bronze `#7E6018`, Red `#BA0630`,
-     Slate `#485460`, Border `#B4BAC0`, Paper `#FBFAF7`.
-   - Text: Display = Playfair Display; Body = Inter (sizes in `tokens.css`).
-2. **Componentize the repeated blocks** (build once, reuse on every page): header nav, footer,
-   **Authorized-Retailers block**, product card, button (variants: primary/navy/outline + sizes),
-   badge, spec table row, accordion, contact banner, breadcrumb.
-3. **Apply Auto Layout** to each component and to page sections (top-down, matching the flex/grid the
-   HTML already uses).
-4. **Bind** fills/text to the styles from step 1; name + organize layers; add a cover page.
-
-## Brand tokens (sampled from the approved style guide)
+## Tokens
 | Token | Hex | Role |
 |---|---|---|
-| Navy 700 | `#001F3D` | primary, header, footer, headings |
-| Navy 900 | `#06121E` | deepest navy |
+| Onyx 700 | `#18181B` | primary dark — ticker, footer, dark bands, headings |
+| Onyx 900 | `#08080A` | deepest black |
 | Gold 500 | `#F0C030` | primary accent / CTA |
+| Gold 400 | `#D8C660` | light gold |
 | Gold 700 | `#7E6018` | bronze detailing |
-| Red 600 | `#BA0630` | Texas accent |
-| Slate 600 | `#485460` | body/secondary text |
-| Gray 300 | `#B4BAC0` | borders |
+| Slate 600 | `#4A4A4E` | body / secondary text |
+| Gray 300 | `#BBBBC0` | borders |
 | Paper | `#FBFAF7` | page background |
 
-**Fonts:** Playfair Display (display serif) + Inter (body). These approximate the style guide's
-serif/sans pairing and are present in Figma, **swap to the true licensed brand fonts when provided.**
-
-## Notes
-- Copy is the **approved** TxBD content (`2026 TxBd Site Content Updates V2`). Long copy is moved into
-  progressive disclosure (accordions, collapsible legal), not deleted.
-- Retailer phone numbers are placeholders pending the final authorized-dealer contact list.
-- Metal price ticker values are placeholders (live data wired by the bdma dev team).
+Full token definitions in `css/tokens.css`; the visual reference is `pages/tokens.html`.

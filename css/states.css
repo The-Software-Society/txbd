@@ -9,18 +9,18 @@
 .states { background: var(--paper); padding: 72px var(--gutter); }
 .states__head { margin-bottom: 48px; }
 .stgroup { margin-bottom: 56px; }
-.stgroup__title { font-family: var(--font-display); font-weight: 700; font-size: 24px; color: var(--navy-700); margin-bottom: 6px; }
+.stgroup__title { font-family: var(--font-display); font-weight: 700; font-size: 24px; color: var(--onyx-700); margin-bottom: 6px; }
 .stgroup__sub { font-size: 14px; color: var(--color-ink-muted); }
 .strow { display: flex; gap: 40px; flex-wrap: wrap; align-items: flex-start; margin-top: 22px; }
 .stcell { display: flex; flex-direction: column; gap: 10px; }
 .stcap { font-family: var(--font-body); font-weight: 700; font-size: 11px; letter-spacing: .12em; text-transform: uppercase; color: var(--gray-400); }
 .stbox { padding: 22px; background: var(--white); border: 1px solid var(--color-border-soft); border-radius: 12px; }
-.stbox--dark { background: var(--navy-700); }
+.stbox--dark { background: var(--onyx-700); }
 
 /* --- Nav link states (real underline, no pseudo) --- */
 .navdemo { display: flex; gap: 8px; align-items: center; }
-.navdemo__link { position: relative; font-family: var(--font-body); font-weight: 600; font-size: 15px; color: var(--navy-700); padding: 10px 12px; }
-.navdemo__link--hover { color: var(--navy-900); }
+.navdemo__link { position: relative; font-family: var(--font-body); font-weight: 600; font-size: 15px; color: var(--onyx-700); padding: 10px 12px; }
+.navdemo__link--hover { color: var(--onyx-900); }
 .navdemo__ul { position: absolute; left: 12px; right: 12px; bottom: 6px; height: 2px; background: var(--gold-500); border-radius: 2px; }
 
 /* --- re-enable mega / menu INSIDE the states board only --- */
@@ -38,7 +38,7 @@
 .btn--primary.is-hover { box-shadow: 0 10px 24px rgba(240,192,48,.35); }
 .card.is-hover { box-shadow: var(--shadow-lg); border-color: var(--gold-400); }
 .retailer.is-hover { background: var(--gold-100); }
-.retailer.is-hover .retailer__visit { background: var(--gold-500); color: var(--navy-900); border-color: var(--gold-500); }
+.retailer.is-hover .retailer__visit { background: var(--gold-500); color: var(--onyx-900); border-color: var(--gold-500); }
 .chip.is-active { border-color: var(--gold-500); background: var(--gold-100); color: var(--gold-700); }
 .input-demo { display: flex; align-items: center; padding: 12px 14px; border-radius: 8px; border: 1px solid var(--color-border); background: var(--white); color: var(--color-ink-muted); font-size: 15px; width: 260px; }
 .input-demo--focus { border-color: var(--gold-500); box-shadow: 0 0 0 3px var(--gold-100); }

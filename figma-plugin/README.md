@@ -14,9 +14,9 @@ collapsed accordions, dropped backgrounds, empty nav).
    group, and registers color/text styles in the file. It zooms to the result when done.
 
 ## Fonts
-Uses **Playfair Display** (display serif) + **Inter** (body). Inter ships with Figma; Playfair
-Display is a free Google font — if it isn't enabled it falls back to Inter automatically (run will
-still succeed). To guarantee the serif, enable Playfair Display in Figma first.
+Uses the approved brand fonts **Crimson Text** (display serif) + **Archivo** (body). Both are free
+Google fonts; if Crimson Text isn't enabled it falls back gracefully (run still succeeds). To
+guarantee the serif, enable Crimson Text in Figma first.
 
 ## Rebuild after edits
 The image data is baked into `code.js`. To regenerate it from the source design/assets:

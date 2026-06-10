@@ -4,21 +4,21 @@
    ============================================================ */
 
 :root {
-  /* ---- Brand color: Navy ---- */
-  --navy-900: #06121E;   /* darkest navy / deep backgrounds */
-  --navy-800: #0B1B2C;
-  --navy-700: #001F3D;   /* PRIMARY brand navy (header, footer, headings) */
-  --navy-600: #16314A;
-  --navy-500: #24435F;
+  /* ---- Brand color: Onyx (true black) ---- */
+  --onyx-900: #08080A;   /* deepest black backgrounds */
+  --onyx-800: #101012;   /* dark surface */
+  --onyx-700: #18181B;   /* PRIMARY dark (ticker, footer, dark bands, headings) */
+  --onyx-600: #232327;   /* raised dark surface */
+  --onyx-500: #303036;   /* dark hairline */
 
-  /* ---- Slate / neutrals ---- */
-  --slate-600: #485460;  /* secondary text */
-  --gray-500: #6B7480;
-  --gray-400: #8A909C;   /* muted text */
-  --gray-300: #B4BAC0;   /* borders / dividers */
-  --gray-200: #C0C6CC;
-  --gray-100: #E7E9EC;
-  --gray-50:  #F4F5F6;   /* section tint */
+  /* ---- Neutrals (warm-neutral, no blue tint) ---- */
+  --slate-600: #4A4A4E;  /* secondary text */
+  --gray-500: #6E6E73;
+  --gray-400: #8C8C92;   /* muted text */
+  --gray-300: #BBBBC0;   /* borders / dividers */
+  --gray-200: #C8C8CC;
+  --gray-100: #E9E9EB;
+  --gray-50:  #F4F4F2;   /* section tint */
   --paper:    #FBFAF7;   /* warm off-white page */
   --white:    #FFFFFF;
 
@@ -29,26 +29,20 @@
   --gold-400: #D8C660;   /* light gold */
   --gold-100: #F7EFD2;   /* gold tint background */
 
-  /* ---- Texas red (accent) ---- */
-  --red-700: #8E0425;
-  --red-600: #BA0630;    /* accent red, highlights, badges */
-  --red-100: #F7DCE2;
-
   /* ---- Semantic roles ---- */
   --color-bg:            var(--paper);
   --color-surface:       var(--white);
   --color-surface-alt:   var(--gray-50);
-  --color-ink:           var(--navy-900);
+  --color-ink:           var(--onyx-900);
   --color-ink-soft:      var(--slate-600);
   --color-ink-muted:     var(--gray-400);
   --color-border:        var(--gray-300);
   --color-border-soft:   var(--gray-100);
-  --color-primary:       var(--navy-700);
+  --color-primary:       var(--onyx-700);
   --color-accent:        var(--gold-500);
-  --color-accent-ink:    var(--navy-900);  /* text on gold */
-  --color-danger:        var(--red-600);
-  --color-on-dark:       #E8EBEF;
-  --color-on-dark-muted: #9FABB7;
+  --color-accent-ink:    var(--onyx-900);  /* text on gold */
+  --color-on-dark:       #ECECEE;
+  --color-on-dark-muted: #A2A2A8;
 
   /* ---- Typography ---- */
   --font-display: "Crimson Text", Georgia, "Times New Roman", serif;
@@ -84,9 +78,9 @@
   --radius-pill: 999px;
 
   /* ---- Elevation ---- */
-  --shadow-sm: 0 1px 2px rgba(6,18,30,.06), 0 1px 3px rgba(6,18,30,.08);
-  --shadow-md: 0 6px 16px rgba(6,18,30,.08), 0 2px 4px rgba(6,18,30,.06);
-  --shadow-lg: 0 18px 40px rgba(6,18,30,.12), 0 4px 10px rgba(6,18,30,.08);
+  --shadow-sm: 0 1px 2px rgba(0,0,0,.07), 0 1px 3px rgba(0,0,0,.09);
+  --shadow-md: 0 6px 16px rgba(0,0,0,.10), 0 2px 4px rgba(0,0,0,.07);
+  --shadow-lg: 0 18px 40px rgba(0,0,0,.16), 0 4px 10px rgba(0,0,0,.10);
 
   /* ---- Layout ---- */
   --container: 1300px;

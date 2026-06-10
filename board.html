@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TxBD — Board View (Figma import preview)</title>
+<link href="https://fonts.googleapis.com/css2?family=Crimson+Text:wght@600;700&family=Archivo:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root { --gold:#F0C030; --muted:#9a9aa2; }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; background: #2b2b2e; color: #ececee; font-family: Archivo, -apple-system, sans-serif; }
+  .topbar { position: sticky; top: 0; z-index: 10; display: flex; align-items: baseline; gap: 20px; flex-wrap: wrap;
+    padding: 18px 32px; background: rgba(20,20,22,.92); backdrop-filter: blur(8px); border-bottom: 1px solid #3a3a3e; }
+  .topbar h1 { font-family: 'Crimson Text', serif; font-weight: 700; font-size: 22px; margin: 0; color: #fff; }
+  .topbar h1 em { font-style: italic; color: var(--gold); }
+  .topbar p { margin: 0; font-size: 13px; color: var(--muted); max-width: 70ch; }
+  .board { padding: 48px 40px 120px; display: flex; flex-direction: column; gap: 72px; }
+  .frameset__title { font-family: 'Crimson Text', serif; font-size: 26px; color: #fff; margin: 0 0 4px; }
+  .frameset__sub { font-size: 13px; color: var(--muted); margin: 0 0 22px; }
+  .frames { display: flex; gap: 56px; align-items: flex-start; flex-wrap: wrap; }
+  figure { margin: 0; }
+  figcaption { font-size: 12px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); margin-bottom: 10px; }
+  figcaption b { color: var(--gold); }
+  .screen { position: relative; overflow: hidden; background: #fff; border-radius: 8px;
+    box-shadow: 0 18px 50px rgba(0,0,0,.45); outline: 1px solid #444; }
+  .screen iframe { border: 0; transform-origin: top left; display: block; background: #fff; }
+  .screen::after { content: ""; position: absolute; inset: 0; pointer-events: none; border-radius: 8px; }
+  .screen .ph { position: absolute; inset: 0; display: grid; place-items: center; color: #999; font-size: 13px; background: #f4f4f2; z-index: 1; }
+</style>
+</head>
+<body>
+<div class="topbar">
+  <h1>TxBD — <em>Board View</em></h1>
+  <p>Live preview of every page in the Figma import bundle, at desktop (1440) and mobile (390). These are the actual project files — the same source that builds <code>txbd-figma-import.zip</code>. Note: this shows the live pages (full mega-nav); the html.to.design import flattens the nav.</p>
+</div>
+<div class="board" id="board"></div>
+
+<script>
+const DESK_SCALE = 0.5, MOB_SCALE = 0.62;
+const PAGES = [
+  { name: 'Homepage', sub: 'Commemorative Series', file: 'pages/home.html', mobile: true },
+  { name: 'Product Detail', sub: '2026 1 oz Gold Lone Star', file: 'pages/product-2026-1oz-gold.html', mobile: true },
+  { name: 'Info Page — First in Class', sub: 'State Oversight / HB 483', file: 'pages/first-in-class.html', mobile: true },
+  { name: 'Info / Educational Page Template', sub: 'Block kit — "the options"', file: 'pages/info-template.html', mobile: false },
+  { name: 'Brand Guidelines', sub: 'Tokens & components', file: 'pages/tokens.html', mobile: false },
+  { name: 'Component States', sub: 'Hover / open / active', file: 'pages/states.html', mobile: false },
+];
+
+const board = document.getElementById('board');
+const frames = [];
+
+function makeFrame(file, label, w, scale) {
+  const fig = document.createElement('figure');
+  const cap = document.createElement('figcaption');
+  cap.innerHTML = label;
+  const screen = document.createElement('div');
+  screen.className = 'screen';
+  screen.style.width = (w * scale) + 'px';
+  screen.style.height = (3000 * scale) + 'px';
+  const ph = document.createElement('div');
+  ph.className = 'ph';
+  ph.textContent = 'loading…';
+  const iframe = document.createElement('iframe');
+  iframe.src = file;
+  iframe.style.width = w + 'px';
+  iframe.style.transform = 'scale(' + scale + ')';
+  iframe.dataset.w = w; iframe.dataset.scale = scale;
+  iframe.addEventListener('load', () => { ph.remove(); [0, 600, 1400, 2600, 4200].forEach(t => setTimeout(() => size(iframe), t)); });
+  // iframe stays put once inserted — never re-append (that would reload it)
+  screen.appendChild(iframe);
+  screen.appendChild(ph);
+  fig.appendChild(cap); fig.appendChild(screen);
+  frames.push(iframe);
+  return fig;
+}
+
+function size(f) {
+  const scale = parseFloat(f.dataset.scale), w = parseInt(f.dataset.w);
+  let h = 3000;
+  try {
+    const doc = f.contentDocument || f.contentWindow.document;
+    doc.documentElement.classList.add('force-reveal'); // reveal scroll-hidden sections
+    h = Math.max(doc.documentElement.scrollHeight, doc.body.scrollHeight, 600);
+  } catch (e) { /* cross-origin (opened via file://) — use fallback height */ }
+  f.style.height = h + 'px';
+  const screen = f.parentElement;
+  screen.style.width = (w * scale) + 'px';
+  screen.style.height = (h * scale) + 'px';
+}
+
+PAGES.forEach(p => {
+  const set = document.createElement('div');
+  set.className = 'frameset';
+  const t = document.createElement('h2'); t.className = 'frameset__title'; t.textContent = p.name; set.appendChild(t);
+  const s = document.createElement('p'); s.className = 'frameset__sub'; s.textContent = p.sub; set.appendChild(s);
+  const row = document.createElement('div'); row.className = 'frames';
+  row.appendChild(makeFrame(p.file, 'Desktop · <b>1440</b>', 1440, DESK_SCALE));
+  if (p.mobile) row.appendChild(makeFrame(p.file, 'Mobile · <b>390</b>', 390, MOB_SCALE));
+  set.appendChild(row);
+  board.appendChild(set);
+});
+
+// re-measure on window resize (fonts/layout settle)
+window.addEventListener('load', () => setTimeout(() => frames.forEach(size), 1200));
+</script>
+</body>
+</html>

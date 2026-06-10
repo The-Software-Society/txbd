@@ -22,13 +22,14 @@ DESKTOP = [
     ('pages/tokens.html', '00-brand-guidelines.html'),
     ('pages/home.html', '01-home.html'),
     ('pages/product-2026-1oz-gold.html', '02-product-2026-1oz-gold.html'),
-    ('pages/content-commemorative-series.html', '03-content-commemorative-series.html'),
-    ('pages/states.html', '04-component-states.html'),
+    ('pages/first-in-class.html', '03-first-in-class.html'),
+    ('pages/info-template.html', '04-info-page-template.html'),
+    ('pages/states.html', '05-component-states.html'),
 ]
 MOBILE = [
-    ('pages/home.html', '05-home-mobile.html'),
-    ('pages/product-2026-1oz-gold.html', '06-product-mobile.html'),
-    ('pages/content-commemorative-series.html', '07-content-mobile.html'),
+    ('pages/home.html', '06-home-mobile.html'),
+    ('pages/product-2026-1oz-gold.html', '07-product-mobile.html'),
+    ('pages/first-in-class.html', '08-first-in-class-mobile.html'),
 ]
 
 FLAT_NAV = ('<nav class="mainnav" aria-label="Primary">'

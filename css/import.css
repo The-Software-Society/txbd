@@ -26,7 +26,7 @@
 
 /* 5. Accordions + disclaimer: show content (toggling does not carry to Figma) */
 .acc__body, .disclaimer__body { max-height: none !important; overflow: visible !important; }
-.acc__icon { background: var(--navy-700) !important; color: #fff !important; border-color: var(--navy-700) !important; position: relative; }
+.acc__icon { background: var(--onyx-700) !important; color: #fff !important; border-color: var(--onyx-700) !important; position: relative; }
 /* the pseudo +/- relies on a CSS transform the importer ignores; use real bars instead.
    Bars are injected into .acc__icon by the build script. Collapsed = plus, expanded = minus. */
 .acc__icon::before, .acc__icon::after { display: none !important; }

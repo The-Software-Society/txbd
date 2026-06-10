@@ -10,17 +10,28 @@
 <link rel="stylesheet" href="css/components.css">
 </head>
 <body>
-<div class="container" style="padding-block:var(--sp-16);max-width:760px">
+<div class="container" style="padding-block:var(--sp-16);max-width:780px">
   <span class="eyebrow">Texas Bullion Depository</span>
-  <h1 style="margin-top:var(--sp-3)">Commemorative Series, Phase 1 Templates</h1>
-  <p class="lead" style="margin-top:var(--sp-4)">First-look design templates. Each opens responsive (resize to preview mobile at 390px).</p>
-  <div class="stack" style="margin-top:var(--sp-10)">
-    <a class="jump" style="display:flex" href="pages/home.html"><b>Homepage, Commemorative Series</b><svg class="ico" style="margin-left:auto;width:18px;height:18px;color:var(--gold-600)" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 6l6 6-6 6"/></svg></a>
-    <a class="jump" style="display:flex" href="pages/tokens.html"><b>Design Tokens &amp; Components</b><svg class="ico" style="margin-left:auto;width:18px;height:18px;color:var(--gold-600)" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 6l6 6-6 6"/></svg></a>
-    <a class="jump" style="display:flex" href="pages/product-2026-1oz-gold.html"><b>Product Detail, 2026 1 oz Gold Lone Star</b><svg class="ico" style="margin-left:auto;width:18px;height:18px;color:var(--gold-600)" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 6l6 6-6 6"/></svg></a>
-    <a class="jump" style="display:flex" href="pages/content-commemorative-series.html"><b>Content / Educational, The Commemorative Series</b><svg class="ico" style="margin-left:auto;width:18px;height:18px;color:var(--gold-600)" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 6l6 6-6 6"/></svg></a>
+  <h1 style="margin-top:var(--sp-3)">Commemorative Series — Design Templates</h1>
+  <p class="lead" style="margin-top:var(--sp-4)">Black &amp; gold design system. Each page is responsive — resize to preview mobile at 390px.</p>
+
+  <a class="jump" style="display:flex;margin-top:var(--sp-8);background:var(--onyx-700);color:var(--white);border-color:var(--onyx-500)" href="board.html"><b style="color:var(--white)">▦ Board View — every page, desktop + mobile (Figma import preview)</b><svg class="ico" style="margin-left:auto;width:18px;height:18px;color:var(--gold-500)" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 6l6 6-6 6"/></svg></a>
+
+  <h3 style="margin-top:var(--sp-12);margin-bottom:var(--sp-4)">Page Templates</h3>
+  <div class="stack">
+    <a class="jump" style="display:flex" href="pages/home.html"><b>Homepage — Commemorative Series</b><svg class="ico" style="margin-left:auto;width:18px;height:18px;color:var(--gold-600)" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 6l6 6-6 6"/></svg></a>
+    <a class="jump" style="display:flex" href="pages/product-2026-1oz-gold.html"><b>Product Detail — 2026 1 oz Gold Lone Star</b><svg class="ico" style="margin-left:auto;width:18px;height:18px;color:var(--gold-600)" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 6l6 6-6 6"/></svg></a>
+    <a class="jump" style="display:flex" href="pages/first-in-class.html"><b>Info Page — First in Class (built from the Info template)</b><svg class="ico" style="margin-left:auto;width:18px;height:18px;color:var(--gold-600)" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 6l6 6-6 6"/></svg></a>
   </div>
-  <p style="margin-top:var(--sp-10);color:var(--color-ink-muted);font-size:var(--fs-sm)">PDFs for Magicul → Figma are in <code>export/out/</code>. See <code>README.md</code>.</p>
+
+  <h3 style="margin-top:var(--sp-10);margin-bottom:var(--sp-4)">Kits &amp; Design System</h3>
+  <div class="stack">
+    <a class="jump" style="display:flex" href="pages/info-template.html"><b>Info / Educational Page Template — Block Options</b><svg class="ico" style="margin-left:auto;width:18px;height:18px;color:var(--gold-600)" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 6l6 6-6 6"/></svg></a>
+    <a class="jump" style="display:flex" href="pages/tokens.html"><b>Brand Guidelines — Tokens &amp; Components</b><svg class="ico" style="margin-left:auto;width:18px;height:18px;color:var(--gold-600)" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 6l6 6-6 6"/></svg></a>
+    <a class="jump" style="display:flex" href="pages/states.html"><b>Component States &amp; Interactions</b><svg class="ico" style="margin-left:auto;width:18px;height:18px;color:var(--gold-600)" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 6l6 6-6 6"/></svg></a>
+  </div>
+
+  <p style="margin-top:var(--sp-10);color:var(--color-ink-muted);font-size:var(--fs-sm)">Figma import bundle: <code>txbd-figma-import.zip</code> (all pages + mobile). Rebuild with <code>python3 export/build-zip.py</code>.</p>
 </div>
 </body>
 </html>

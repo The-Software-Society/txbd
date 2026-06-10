@@ -13,11 +13,11 @@ const IMAGES = __IMAGES__;
   const rgb = (hex) => { hex = hex.replace('#', ''); return { r: parseInt(hex.slice(0, 2), 16) / 255, g: parseInt(hex.slice(2, 4), 16) / 255, b: parseInt(hex.slice(4, 6), 16) / 255 }; };
   const solid = (hex, o) => { const p = { type: 'SOLID', color: rgb(hex) }; if (o != null) p.opacity = o; return [p]; };
   const C = {
-    navy900: '06121E', navy700: '001F3D', navy600: '16314A',
+    navy900: '08080A', navy700: '18181B', navy600: '232327',
     gold500: 'F0C030', gold400: 'D8C660', gold600: 'B8902A', gold700: '7E6018', gold100: 'F7EFD2',
-    red600: 'BA0630', slate600: '485460', gray400: '8A909C', gray300: 'B4BAC0',
-    gray100: 'E7E9EC', gray50: 'F4F5F6', paper: 'FBFAF7', white: 'FFFFFF',
-    onDark: 'E8EBEF', onDarkMuted: '9FABB7'
+    slate600: '4A4A4E', gray400: '8C8C92', gray300: 'BBBBC0',
+    gray100: 'E9E9EB', gray50: 'F4F4F2', paper: 'FBFAF7', white: 'FFFFFF',
+    onDark: 'ECECEE', onDarkMuted: 'A2A2A8'
   };
 
   // ---------- fonts ----------
@@ -41,8 +41,8 @@ const IMAGES = __IMAGES__;
 
   // ---------- styles ----------
   const ps = (name, hex) => { const s = figma.createPaintStyle(); s.name = name; s.paints = solid(hex); };
-  ps('Navy/700 Primary', C.navy700); ps('Navy/900', C.navy900); ps('Gold/500 Accent', C.gold500);
-  ps('Gold/700 Bronze', C.gold700); ps('Red/600 Texas', C.red600); ps('Slate/600', C.slate600);
+  ps('Onyx/700 Primary', C.navy700); ps('Onyx/900 Black', C.navy900); ps('Gold/500 Accent', C.gold500);
+  ps('Gold/400 Light', C.gold400); ps('Gold/700 Bronze', C.gold700); ps('Slate/600', C.slate600);
   ps('Gray/300 Border', C.gray300); ps('Paper', C.paper);
 
   const TS = {
