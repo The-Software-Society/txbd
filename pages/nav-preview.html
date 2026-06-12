@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nav Preview — Texas Bullion Depository</title>
+<script>document.documentElement.className += ' has-js';</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Archivo:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/tokens.css">
+<link rel="stylesheet" href="../css/base.css">
+<link rel="stylesheet" href="../css/components.css">
+<link rel="stylesheet" href="../css/pages.css">
+<link rel="stylesheet" href="../css/responsive.css">
+<link rel="stylesheet" href="../css/animations.css">
+<style>
+/* ============================================================
+   NAV PREVIEW OVERRIDES
+   Changes from current → proposed
+   ============================================================ */
+
+/* --- Desktop: gold underline on hover/active --- */
+.mainnav__link::after {
+  background: var(--gold-500);
+}
+
+/* --- Desktop: mega feature panel → gold-tinted brand card --- */
+.mega__feature {
+  background: linear-gradient(160deg, var(--stone-100, #f5f0e8), var(--cream-50, #faf8f3));
+  color: var(--onyx-900);
+  border-left: 1px solid var(--color-border-soft);
+}
+.mega__feature h4 { color: var(--onyx-900); font-family: var(--font-serif); }
+.mega__feature p  { color: var(--color-ink-soft); }
+.mega__feature a  { color: var(--gold-600); }
+.mega__feature img {
+  border-radius: var(--radius-md);
+  aspect-ratio: 16/10;
+  object-fit: cover;
+  box-shadow: var(--shadow-sm);
+  border: 1px solid var(--color-border-soft);
+}
+.mega__feature .badge { background: var(--gold-500); color: var(--onyx-900); }
+
+/* --- Desktop: single CTA — remove Create Account ghost btn --- */
+.btn--ghost.hide-preview { display: none; }
+
+/* ============================================================
+   MOBILE DRAWER — dark brand treatment
+   ============================================================ */
+.drawer {
+  background: var(--onyx-900);
+}
+.drawer__head {
+  border-bottom-color: rgba(255,255,255,.1);
+  padding: var(--sp-5) var(--sp-6);
+  align-items: center;
+  gap: var(--sp-4);
+}
+.drawer__head-brand {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-3);
+}
+.drawer__head-brand svg { color: var(--gold-500); }
+.drawer__head-brand span { font-size: 1rem; font-weight: 700; color: var(--white); font-family: var(--font-body); }
+.drawer__head-brand em { font-style: italic; }
+.drawer__close {
+  color: rgba(255,255,255,.6);
+  margin-left: auto;
+}
+.drawer__close:hover { color: var(--white); }
+
+.drawer__group {
+  border-bottom-color: rgba(255,255,255,.08);
+}
+.drawer__toggle {
+  color: rgba(255,255,255,.85);
+  font-weight: 600;
+  padding: 16px var(--sp-4);
+  letter-spacing: .01em;
+}
+.drawer__toggle:hover { color: var(--white); }
+.drawer__group.is-open .drawer__toggle {
+  color: var(--gold-400);
+}
+.drawer__group.is-open {
+  border-left: 3px solid var(--gold-500);
+}
+.drawer__group:not(.is-open) {
+  border-left: 3px solid transparent;
+}
+.drawer__sub a {
+  color: rgba(255,255,255,.55);
+  padding: 10px var(--sp-6);
+  font-size: var(--fs-sm);
+  transition: color .15s, padding-left .15s;
+}
+.drawer__sub a:hover {
+  color: var(--gold-300);
+  padding-left: calc(var(--sp-6) + 4px);
+}
+
+.drawer__foot {
+  border-top-color: rgba(255,255,255,.1);
+  padding: var(--sp-5) var(--sp-6);
+}
+
+/* --- Preview page scaffolding (not part of nav) --- */
+.preview-body {
+  min-height: 100vh;
+  background: var(--color-surface-alt);
+  padding: var(--sp-24) 0 var(--sp-32);
+}
+.preview-label {
+  font-size: var(--fs-xs);
+  font-weight: 700;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--color-ink-muted);
+  text-align: center;
+  margin-bottom: var(--sp-4);
+}
+.preview-note {
+  max-width: 680px;
+  margin: var(--sp-16) auto 0;
+  background: var(--white);
+  border: 1px solid var(--color-border-soft);
+  border-radius: var(--radius-lg);
+  padding: var(--sp-8) var(--sp-10);
+}
+.preview-note h3 { font-size: var(--fs-h4); margin-bottom: var(--sp-4); }
+.preview-note ul { padding-left: var(--sp-6); display: grid; gap: var(--sp-2); }
+.preview-note li { font-size: var(--fs-sm); color: var(--color-ink-soft); line-height: 1.6; }
+.preview-note li strong { color: var(--onyx-900); }
+</style>
+</head>
+<body>
+
+<!-- ===== Ticker ===== -->
+<div class="ticker">
+  <div class="container ticker__inner">
+    <div class="ticker__metals">
+      <span class="ticker__metal"><i>Gold</i> <b>$2,412.80</b> <em class="up">▲ 0.4%</em></span>
+      <span class="ticker__metal"><i>Silver</i> <b>$31.40</b> <em class="up">▲ 0.2%</em></span>
+      <span class="ticker__metal"><i>Platinum</i> <b>$998.10</b> <em class="down">▼ 0.1%</em></span>
+    </div>
+    <div class="ticker__util">
+      <a href="#">1-844-416-GOLD</a>
+      <a class="ticker__signin" href="#">Sign In</a>
+    </div>
+  </div>
+</div>
+
+<!-- ===== PROPOSED HEADER ===== -->
+<header class="site-header">
+  <div class="container site-header__inner">
+    <a class="brand" href="#">
+      <svg class="brand__seal" viewBox="0 0 48 48" fill="none"><circle cx="24" cy="24" r="22" stroke="currentColor" stroke-width="1.5"/><circle cx="24" cy="24" r="17" stroke="currentColor" stroke-width="1"/><path class="star" fill="currentColor" d="M24 12l3.4 8.2 8.6.7-6.3 5.9 1.6 8.7L24 31.2l-7.3 4.3 1.6-8.7-6.3-5.9 8.6-.7z"/></svg>
+      <span class="brand__text"><span class="brand__name">Texas <em>Bullion</em> Depository</span><span class="brand__sub">Commemorative Series</span></span>
+    </a>
+
+    <!-- Proposed: 3 top-level items instead of 4 -->
+    <nav class="mainnav" aria-label="Primary">
+
+      <!-- 1. Coins & Redbacks — mega (unchanged structure, updated feature panel) -->
+      <div class="mainnav__item has-mega">
+        <button class="mainnav__link" type="button">Coins &amp; Redbacks <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></button>
+        <div class="mega"><div class="mega__inner">
+          <div class="mega__col">
+            <div class="mega__label">Commemorative Coins</div>
+            <a class="mega__link" href="content-commemorative-series.html">The Commemorative Series <small>Program overview</small></a>
+            <a class="mega__link" href="#">State of Texas Lone Stars</a>
+            <a class="mega__link" href="content-collections.html">2025 &amp; 2026 Collections</a>
+            <a class="mega__link mega__link--child" href="product-2026-1oz-gold.html">2026 1 oz Gold Lone Star</a>
+            <a class="mega__link mega__link--child" href="#">2026 ½ oz Gold Lone Star</a>
+            <a class="mega__link mega__link--child" href="#">2026 1 oz Silver Lone Star</a>
+          </div>
+          <div class="mega__col">
+            <div class="mega__label">Modern Redbacks</div>
+            <a class="mega__link" href="content-modern-redbacks.html">The Modern Redback Story</a>
+            <a class="mega__link mega__link--child" href="#">5 Centigram Redback</a>
+            <a class="mega__link mega__link--child" href="#">20 Centigram Redback</a>
+            <a class="mega__link mega__link--child" href="#">100 Centigram Redback</a>
+          </div>
+          <div class="mega__col">
+            <div class="mega__label">Learn &amp; Buy</div>
+            <a class="mega__link" href="first-in-class.html">First in Class <small>State oversight</small></a>
+            <a class="mega__link" href="#">Meet the Designer</a>
+            <a class="mega__link" href="#">Where to Buy</a>
+            <a class="mega__link" href="#">FAQs</a>
+          </div>
+          <!-- Proposed: gold-tinted feature card instead of dark onyx -->
+          <div class="mega__feature">
+            <img src="../assets/img/group-2026-coins.jpg" alt="2026 Lone Star Collection">
+            <h4>2026 Lone Star Collection</h4>
+            <p>Lady Liberty beside the Texas Capitol — the new perennial design.</p>
+            <a href="product-2026-1oz-gold.html">Explore the collection <svg class="ico" style="width:16px;height:16px" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          </div>
+        </div></div>
+      </div>
+
+      <!-- 2. The Series — simple dropdown -->
+      <div class="mainnav__item has-menu">
+        <button class="mainnav__link" type="button">The Series <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></button>
+        <div class="menu">
+          <a href="content-commemorative-series.html"><span class="dot"></span>Series Overview</a>
+          <a href="content-collections.html"><span class="dot"></span>2025 &amp; 2026 Collections</a>
+          <a href="#"><span class="dot"></span>Meet the Designer</a>
+          <a href="first-in-class.html"><span class="dot"></span>First in Class</a>
+          <a href="#"><span class="dot"></span>FAQs</a>
+        </div>
+      </div>
+
+      <!-- 3. The Depository -->
+      <div class="mainnav__item has-menu">
+        <button class="mainnav__link" type="button">The Depository <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></button>
+        <div class="menu">
+          <a href="first-in-class.html"><span class="dot"></span>First in Class</a>
+          <a href="#"><span class="dot"></span>Why Use Us?</a>
+          <a href="#"><span class="dot"></span>Depository Administrator</a>
+          <a href="#"><span class="dot"></span>Information about Leander, Texas</a>
+        </div>
+      </div>
+
+      <!-- 4. Account -->
+      <div class="mainnav__item has-menu">
+        <button class="mainnav__link" type="button">Account <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></button>
+        <div class="menu">
+          <a href="#"><span class="dot"></span>Items Required to Open</a>
+          <a href="#"><span class="dot"></span>Account Holder Agreement</a>
+          <a href="#"><span class="dot"></span>Account Types</a>
+          <a href="#"><span class="dot"></span>Pricing</a>
+          <a href="#"><span class="dot"></span>IRA Storage</a>
+          <a href="#"><span class="dot"></span>Contact Us</a>
+        </div>
+      </div>
+
+    </nav>
+
+    <!-- Proposed: single CTA -->
+    <div class="site-header__actions">
+      <a class="btn btn--primary" href="#">Where to Buy</a>
+    </div>
+
+    <button class="hamburger" type="button" aria-label="Open menu"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h18"/></svg></button>
+  </div>
+</header>
+
+<!-- ===== Page body placeholder ===== -->
+<div class="preview-body">
+  <div class="container">
+    <p class="preview-label">↑ Proposed desktop nav above &nbsp;·&nbsp; Open mobile menu (hamburger) to see proposed drawer ↑</p>
+
+    <div class="preview-note">
+      <h3>What changed</h3>
+      <ul>
+        <li><strong>Desktop — 4 items, reorganized:</strong> Coins &amp; Redbacks · The Series · The Depository · Account. Support (Contact + FAQs) is folded into Account. Same access, cleaner grouping.</li>
+        <li><strong>Desktop — single CTA:</strong> Removed "Create Account" from the header. "Where to Buy" is the only action — clearer hierarchy.</li>
+        <li><strong>Desktop — mega feature panel:</strong> Changed from dark onyx card to a light gold-tinted card that matches the site's cream/stone palette.</li>
+        <li><strong>Desktop — hover underline:</strong> Now gold instead of gray, matching the brand accent color.</li>
+        <li><strong>Mobile drawer — dark background:</strong> Onyx-900 matches the hero and WTB sections. Feels premium rather than generic.</li>
+        <li><strong>Mobile drawer — gold accent:</strong> Open group gets a gold left-border and the toggle text turns gold. Sub-links brighten to gold on hover.</li>
+        <li><strong>Mobile drawer — brand seal in header:</strong> TxBD seal replaces plain text for a stronger brand moment when the menu opens.</li>
+        <li><strong>Mobile drawer — single CTA:</strong> Only "Where to Buy" at the bottom, no competing Create Account button.</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- ===== PROPOSED MOBILE DRAWER ===== -->
+<div class="drawer-backdrop"></div>
+<aside class="drawer" aria-label="Menu">
+  <div class="drawer__head">
+    <div class="drawer__head-brand">
+      <svg class="brand__seal" style="width:32px;height:32px;color:var(--gold-500)" viewBox="0 0 48 48" fill="none"><circle cx="24" cy="24" r="22" stroke="currentColor" stroke-width="1.5"/><circle cx="24" cy="24" r="17" stroke="currentColor" stroke-width="1"/><path fill="var(--gold-500)" d="M24 12l3.4 8.2 8.6.7-6.3 5.9 1.6 8.7L24 31.2l-7.3 4.3 1.6-8.7-6.3-5.9 8.6-.7z"/></svg>
+      <span>Texas <em>Bullion</em> Depository</span>
+    </div>
+    <button class="drawer__close" type="button" aria-label="Close"><svg class="ico" style="width:24px;height:24px" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+  </div>
+  <div class="drawer__body">
+    <div class="drawer__group">
+      <button class="drawer__toggle" type="button">Coins &amp; Redbacks <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></button>
+      <div class="drawer__sub">
+        <a href="content-commemorative-series.html">The Commemorative Series</a>
+        <a href="content-collections.html">2025 &amp; 2026 Collections</a>
+        <a href="product-2026-1oz-gold.html">2026 1 oz Gold Lone Star</a>
+        <a href="content-modern-redbacks.html">Modern Redbacks</a>
+        <a href="#">Where to Buy</a>
+      </div>
+    </div>
+    <div class="drawer__group">
+      <button class="drawer__toggle" type="button">The Series <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></button>
+      <div class="drawer__sub">
+        <a href="content-commemorative-series.html">Series Overview</a>
+        <a href="#">Meet the Designer</a>
+        <a href="first-in-class.html">First in Class</a>
+        <a href="#">FAQs</a>
+      </div>
+    </div>
+    <div class="drawer__group">
+      <button class="drawer__toggle" type="button">The Depository <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></button>
+      <div class="drawer__sub">
+        <a href="first-in-class.html">First in Class</a>
+        <a href="#">Why Use Us?</a>
+        <a href="#">Depository Administrator</a>
+        <a href="#">Information about Leander, Texas</a>
+      </div>
+    </div>
+    <div class="drawer__group">
+      <button class="drawer__toggle" type="button">Account <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></button>
+      <div class="drawer__sub">
+        <a href="#">Items Required to Open</a>
+        <a href="#">Account Holder Agreement</a>
+        <a href="#">Account Types</a>
+        <a href="#">Pricing</a>
+        <a href="#">IRA Storage</a>
+        <a href="#">Contact Us</a>
+      </div>
+    </div>
+  </div>
+  <div class="drawer__foot">
+    <a class="btn btn--primary btn--block" href="#">Where to Buy</a>
+  </div>
+</aside>
+
+<script src="../js/app.js"></script>
+</body>
+</html>

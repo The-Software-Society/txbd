@@ -1,0 +1,732 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nav Redesign v2 — Texas Bullion Depository</title>
+<script>document.documentElement.className += ' has-js';</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Archivo:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/tokens.css">
+<link rel="stylesheet" href="../css/base.css">
+<link rel="stylesheet" href="../css/components.css">
+<link rel="stylesheet" href="../css/pages.css">
+<link rel="stylesheet" href="../css/responsive.css">
+<link rel="stylesheet" href="../css/animations.css">
+<style>
+/* ============================================================
+   NAV v2 — dark header · floating dropdowns · full-screen
+   mobile overlay
+   ============================================================ */
+
+/* --- Ticker: dark to match new header --- */
+.ticker { background: var(--onyx-800); border-bottom: 1px solid rgba(255,255,255,.06); }
+
+/* ============================================================
+   HEADER
+   ============================================================ */
+.nav2 {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: var(--onyx-900);
+  border-bottom: 1px solid rgba(240,192,48,.18);
+  box-shadow: 0 4px 32px rgba(0,0,0,.45);
+}
+.nav2__inner {
+  display: flex;
+  align-items: center;
+  height: 72px;
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 var(--sp-10);
+  gap: var(--sp-6);
+}
+
+/* Brand */
+.nav2__brand {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-3);
+  text-decoration: none;
+  flex: none;
+}
+.nav2__seal { width: 38px; height: 38px; color: var(--gold-400); }
+.nav2__name {
+  font-size: var(--fs-sm);
+  font-weight: 700;
+  color: var(--white);
+  line-height: 1.2;
+}
+.nav2__name em { font-style: italic; color: var(--gold-400); }
+.nav2__sub {
+  display: block;
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: rgba(240,192,48,.5);
+  margin-top: 2px;
+}
+
+/* Desktop nav */
+.nav2__nav {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-1);
+  margin: 0 auto;
+}
+.nav2__item { position: relative; }
+
+.nav2__btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 8px 14px;
+  background: none;
+  border: none;
+  color: rgba(255,255,255,.65);
+  font-family: var(--font-body);
+  font-size: var(--fs-sm);
+  font-weight: 600;
+  letter-spacing: .02em;
+  cursor: pointer;
+  border-radius: var(--radius-sm);
+  transition: color .15s, background .15s;
+  white-space: nowrap;
+}
+.nav2__btn:hover { color: var(--white); background: rgba(255,255,255,.06); }
+.nav2__btn .chev { width: 12px; height: 12px; opacity: .45; transition: transform .2s ease, opacity .15s; }
+.nav2__item.is-open > .nav2__btn { color: var(--gold-400); background: rgba(240,192,48,.08); }
+.nav2__item.is-open > .nav2__btn .chev { transform: rotate(180deg); opacity: 1; }
+
+/* Divider between nav groups */
+.nav2__sep {
+  width: 1px;
+  height: 18px;
+  background: rgba(255,255,255,.1);
+  flex: none;
+  margin: 0 var(--sp-2);
+}
+
+/* ============================================================
+   DROPDOWN PANELS (standard)
+   ============================================================ */
+.nav2__drop {
+  position: absolute;
+  top: calc(100% + 10px);
+  left: 50%;
+  transform: translateX(-50%) translateY(-4px);
+  min-width: 230px;
+  background: var(--onyx-700);
+  border: 1px solid rgba(255,255,255,.07);
+  border-top: 2px solid var(--gold-500);
+  border-radius: 0 0 var(--radius-lg) var(--radius-lg);
+  box-shadow: 0 24px 64px rgba(0,0,0,.55), 0 2px 0 rgba(240,192,48,.2);
+  padding: var(--sp-3) var(--sp-2);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateX(-50%) translateY(-6px);
+  transition: opacity .18s ease, transform .18s ease, visibility .18s;
+  pointer-events: none;
+}
+.nav2__item.is-open > .nav2__drop {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(-50%) translateY(0);
+  pointer-events: auto;
+}
+
+.nav2__drop-link {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-3);
+  padding: 10px var(--sp-4);
+  border-radius: var(--radius-sm);
+  color: rgba(255,255,255,.65);
+  font-size: var(--fs-sm);
+  text-decoration: none;
+  transition: color .15s, background .15s, padding-left .15s;
+  white-space: nowrap;
+}
+.nav2__drop-link:hover {
+  color: var(--gold-300);
+  background: rgba(255,255,255,.05);
+  padding-left: calc(var(--sp-4) + 4px);
+}
+.nav2__drop-link::before {
+  content: '';
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: rgba(240,192,48,.4);
+  flex: none;
+  transition: background .15s;
+}
+.nav2__drop-link:hover::before { background: var(--gold-400); }
+
+.nav2__drop-label {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: rgba(240,192,48,.5);
+  padding: var(--sp-3) var(--sp-4) var(--sp-1);
+  margin-top: var(--sp-1);
+  border-top: 1px solid rgba(255,255,255,.06);
+}
+.nav2__drop-label:first-child { border-top: none; margin-top: 0; padding-top: var(--sp-1); }
+
+/* ============================================================
+   MEGA PANEL — Coins & Redbacks
+   ============================================================ */
+.nav2__mega {
+  position: absolute;
+  top: calc(100% + 10px);
+  left: -80px;
+  width: min(900px, 95vw);
+  background: var(--onyx-700);
+  border: 1px solid rgba(255,255,255,.07);
+  border-top: 2px solid var(--gold-500);
+  border-radius: 0 0 var(--radius-lg) var(--radius-lg);
+  box-shadow: 0 24px 64px rgba(0,0,0,.55);
+  overflow: hidden;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-6px);
+  transition: opacity .18s ease, transform .18s ease, visibility .18s;
+  pointer-events: none;
+}
+.nav2__item.is-open > .nav2__mega {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+.nav2__mega-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 260px;
+}
+.nav2__mega-col {
+  padding: var(--sp-6) var(--sp-5);
+  border-right: 1px solid rgba(255,255,255,.06);
+}
+.nav2__mega-col:last-child { border-right: none; }
+
+.nav2__mega-label {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--gold-500);
+  margin-bottom: var(--sp-3);
+  padding-bottom: var(--sp-2);
+  border-bottom: 1px solid rgba(240,192,48,.15);
+}
+.nav2__mega-link {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  padding: 8px var(--sp-2);
+  margin-inline: calc(-1 * var(--sp-2));
+  border-radius: var(--radius-sm);
+  color: rgba(255,255,255,.65);
+  font-size: var(--fs-sm);
+  text-decoration: none;
+  transition: color .15s, background .15s, padding-left .15s;
+}
+.nav2__mega-link:hover {
+  color: var(--gold-300);
+  background: rgba(255,255,255,.05);
+  padding-left: calc(var(--sp-2) + 4px);
+}
+.nav2__mega-link small { font-size: 11px; color: rgba(255,255,255,.3); }
+.nav2__mega-link--child {
+  padding-left: var(--sp-4);
+  font-size: 13px;
+  color: rgba(255,255,255,.4);
+}
+
+/* Feature card */
+.nav2__mega-feature {
+  padding: var(--sp-5);
+  background: linear-gradient(160deg, rgba(240,192,48,.1), rgba(240,192,48,.03));
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-3);
+}
+.nav2__mega-feature img {
+  border-radius: var(--radius-md);
+  aspect-ratio: 16/10;
+  object-fit: cover;
+  border: 1px solid rgba(240,192,48,.2);
+  box-shadow: 0 8px 24px rgba(0,0,0,.3);
+}
+.nav2__mega-feature h4 {
+  color: var(--white);
+  font-family: var(--font-serif);
+  font-size: 1.05rem;
+  margin: 0;
+}
+.nav2__mega-feature p {
+  font-size: var(--fs-xs);
+  color: rgba(255,255,255,.45);
+  margin: 0;
+  line-height: 1.5;
+}
+.nav2__mega-feature a {
+  margin-top: auto;
+  color: var(--gold-400);
+  font-size: var(--fs-sm);
+  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  text-decoration: none;
+  transition: color .15s;
+}
+.nav2__mega-feature a:hover { color: var(--gold-300); }
+
+/* ============================================================
+   HEADER CTA + HAMBURGER
+   ============================================================ */
+.nav2__actions { display: flex; align-items: center; gap: var(--sp-3); flex: none; }
+
+.nav2__burger {
+  display: none;
+  margin-left: auto;
+  width: 44px;
+  height: 44px;
+  border: 1px solid rgba(255,255,255,.15);
+  background: rgba(255,255,255,.05);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  color: var(--white);
+  align-items: center;
+  justify-content: center;
+}
+.nav2__burger:hover { background: rgba(255,255,255,.1); }
+
+@media (max-width: 900px) {
+  .nav2__nav, .nav2__actions { display: none; }
+  .nav2__burger { display: flex; }
+  .nav2__inner { padding: 0 var(--sp-6); }
+}
+
+/* ============================================================
+   FULL-SCREEN MOBILE OVERLAY
+   ============================================================ */
+.nav2-ov {
+  position: fixed;
+  inset: 0;
+  background: var(--onyx-900);
+  z-index: 100;
+  display: flex;
+  flex-direction: column;
+  transform: translateY(-100%);
+  transition: transform .42s cubic-bezier(.2,.7,.2,1);
+}
+.nav2-ov.is-open { transform: translateY(0); }
+
+.nav2-ov__head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--sp-5) var(--sp-6);
+  border-bottom: 1px solid rgba(240,192,48,.15);
+  flex: none;
+}
+.nav2-ov__brand {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-3);
+}
+.nav2-ov__seal { width: 32px; height: 32px; }
+.nav2-ov__name { font-size: 1rem; font-weight: 700; color: var(--white); }
+.nav2-ov__name em { font-style: italic; color: var(--gold-400); }
+
+.nav2-ov__close {
+  width: 40px;
+  height: 40px;
+  border: 1px solid rgba(255,255,255,.12);
+  background: rgba(255,255,255,.05);
+  border-radius: 50%;
+  cursor: pointer;
+  color: rgba(255,255,255,.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background .15s, color .15s;
+}
+.nav2-ov__close:hover { background: rgba(255,255,255,.12); color: var(--white); }
+
+.nav2-ov__body { flex: 1; overflow-y: auto; }
+
+.nav2-ov__group { border-bottom: 1px solid rgba(255,255,255,.06); }
+
+.nav2-ov__toggle {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 20px var(--sp-6);
+  background: none;
+  border: 0;
+  border-left: 3px solid transparent;
+  font-family: var(--font-serif);
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: rgba(255,255,255,.8);
+  cursor: pointer;
+  text-align: left;
+  transition: color .15s, border-color .15s, background .15s;
+}
+.nav2-ov__toggle:hover { color: var(--white); background: rgba(255,255,255,.02); }
+.nav2-ov__toggle .chev { width: 20px; height: 20px; opacity: .3; transition: transform .25s ease, opacity .15s; }
+.nav2-ov__group.is-open .nav2-ov__toggle {
+  color: var(--gold-400);
+  border-left-color: var(--gold-500);
+  background: rgba(240,192,48,.04);
+}
+.nav2-ov__group.is-open .nav2-ov__toggle .chev { transform: rotate(180deg); opacity: .9; }
+
+.nav2-ov__sub { overflow: hidden; max-height: 0; transition: max-height .3s ease; }
+.nav2-ov__sub a {
+  display: block;
+  padding: 12px var(--sp-8);
+  font-size: var(--fs-sm);
+  color: rgba(255,255,255,.45);
+  text-decoration: none;
+  transition: color .15s, padding-left .15s;
+  border-left: 3px solid transparent;
+}
+.nav2-ov__sub a:hover { color: var(--gold-300); padding-left: calc(var(--sp-8) + 4px); }
+
+.nav2-ov__foot {
+  padding: var(--sp-6);
+  border-top: 1px solid rgba(255,255,255,.08);
+  flex: none;
+  display: grid;
+  gap: var(--sp-3);
+}
+
+@media (min-width: 901px) {
+  .nav2-ov { display: none !important; }
+}
+
+/* ============================================================
+   PREVIEW PAGE BODY
+   ============================================================ */
+.preview-page {
+  min-height: 100vh;
+  background: var(--color-surface-alt);
+  padding: var(--sp-20) 0 var(--sp-32);
+}
+.preview-note {
+  max-width: 700px;
+  margin: 0 auto;
+  background: var(--white);
+  border: 1px solid var(--color-border-soft);
+  border-radius: var(--radius-lg);
+  padding: var(--sp-8) var(--sp-10);
+  box-shadow: var(--shadow-sm);
+}
+.preview-note h3 { margin-bottom: var(--sp-5); }
+.preview-note ul { padding-left: var(--sp-5); display: grid; gap: var(--sp-3); }
+.preview-note li { font-size: var(--fs-sm); color: var(--color-ink-soft); line-height: 1.65; }
+.preview-note li strong { color: var(--onyx-900); }
+.preview-hint {
+  text-align: center;
+  font-size: var(--fs-xs);
+  font-weight: 600;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  color: var(--color-ink-muted);
+  margin-bottom: var(--sp-8);
+}
+</style>
+</head>
+<body>
+
+<!-- ===== Ticker ===== -->
+<div class="ticker">
+  <div class="container ticker__inner">
+    <div class="ticker__metals">
+      <span class="ticker__metal"><i>Gold</i> <b>$2,412.80</b> <em class="up">▲ 0.4%</em></span>
+      <span class="ticker__metal"><i>Silver</i> <b>$31.40</b> <em class="up">▲ 0.2%</em></span>
+      <span class="ticker__metal"><i>Platinum</i> <b>$998.10</b> <em class="down">▼ 0.1%</em></span>
+    </div>
+    <div class="ticker__util">
+      <a href="#">1-844-416-GOLD</a>
+      <a class="ticker__signin" href="#">Sign In</a>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================================
+     PROPOSED HEADER
+     ============================================================ -->
+<header class="nav2">
+  <div class="nav2__inner">
+
+    <!-- Brand -->
+    <a class="nav2__brand" href="#">
+      <svg class="nav2__seal" viewBox="0 0 48 48" fill="none">
+        <circle cx="24" cy="24" r="22" stroke="currentColor" stroke-width="1.5"/>
+        <circle cx="24" cy="24" r="17" stroke="currentColor" stroke-width="1"/>
+        <path fill="var(--gold-400)" d="M24 12l3.4 8.2 8.6.7-6.3 5.9 1.6 8.7L24 31.2l-7.3 4.3 1.6-8.7-6.3-5.9 8.6-.7z"/>
+      </svg>
+      <span class="nav2__name">Texas <em>Bullion</em> Depository<span class="nav2__sub">Commemorative Series</span></span>
+    </a>
+
+    <!-- Desktop nav -->
+    <nav class="nav2__nav" aria-label="Primary">
+
+      <!-- Coins & Redbacks — mega -->
+      <div class="nav2__item">
+        <button class="nav2__btn" type="button">
+          Coins &amp; Redbacks
+          <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+        </button>
+        <div class="nav2__mega">
+          <div class="nav2__mega-grid">
+            <div class="nav2__mega-col">
+              <div class="nav2__mega-label">Commemorative Coins</div>
+              <a class="nav2__mega-link" href="#">The Commemorative Series <small>Program overview</small></a>
+              <a class="nav2__mega-link" href="#">State of Texas Lone Stars</a>
+              <a class="nav2__mega-link" href="#">2025 &amp; 2026 Collections</a>
+              <a class="nav2__mega-link nav2__mega-link--child" href="#">2026 1 oz Gold Lone Star</a>
+              <a class="nav2__mega-link nav2__mega-link--child" href="#">2026 ½ oz Gold Lone Star</a>
+              <a class="nav2__mega-link nav2__mega-link--child" href="#">2026 1 oz Silver Lone Star</a>
+            </div>
+            <div class="nav2__mega-col">
+              <div class="nav2__mega-label">Modern Redbacks</div>
+              <a class="nav2__mega-link" href="#">The Modern Redback Story</a>
+              <a class="nav2__mega-link nav2__mega-link--child" href="#">5 Centigram Redback</a>
+              <a class="nav2__mega-link nav2__mega-link--child" href="#">20 Centigram Redback</a>
+              <a class="nav2__mega-link nav2__mega-link--child" href="#">100 Centigram Redback</a>
+            </div>
+            <div class="nav2__mega-col">
+              <div class="nav2__mega-label">Learn &amp; Buy</div>
+              <a class="nav2__mega-link" href="#">First in Class <small>State oversight</small></a>
+              <a class="nav2__mega-link" href="#">Meet the Designer</a>
+              <a class="nav2__mega-link" href="#">Where to Buy</a>
+              <a class="nav2__mega-link" href="#">FAQs</a>
+            </div>
+            <div class="nav2__mega-feature">
+              <img src="../assets/img/group-2026-coins.jpg" alt="2026 Lone Star Collection">
+              <h4>2026 Lone Star Collection</h4>
+              <p>Lady Liberty beside the Texas Capitol — the new perennial design.</p>
+              <a href="#">Explore the collection <svg style="width:14px;height:14px;display:inline-block;vertical-align:middle" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <span class="nav2__sep"></span>
+
+      <!-- The Series -->
+      <div class="nav2__item">
+        <button class="nav2__btn" type="button">
+          The Series
+          <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+        </button>
+        <div class="nav2__drop">
+          <a class="nav2__drop-link" href="#">Series Overview</a>
+          <a class="nav2__drop-link" href="#">2025 &amp; 2026 Collections</a>
+          <a class="nav2__drop-link" href="#">Meet the Designer</a>
+          <a class="nav2__drop-link" href="#">First in Class</a>
+          <a class="nav2__drop-link" href="#">FAQs</a>
+        </div>
+      </div>
+
+      <span class="nav2__sep"></span>
+
+      <!-- The Depository -->
+      <div class="nav2__item">
+        <button class="nav2__btn" type="button">
+          The Depository
+          <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+        </button>
+        <div class="nav2__drop">
+          <a class="nav2__drop-link" href="#">Why Use Us?</a>
+          <a class="nav2__drop-link" href="#">First in Class</a>
+          <a class="nav2__drop-link" href="#">Depository Administrator</a>
+          <a class="nav2__drop-link" href="#">Information about Leander, Texas</a>
+        </div>
+      </div>
+
+      <span class="nav2__sep"></span>
+
+      <!-- Account -->
+      <div class="nav2__item">
+        <button class="nav2__btn" type="button">
+          Account
+          <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+        </button>
+        <div class="nav2__drop">
+          <a class="nav2__drop-link" href="#">Items Required to Open</a>
+          <a class="nav2__drop-link" href="#">Account Holder Agreement</a>
+          <a class="nav2__drop-link" href="#">Account Types</a>
+          <a class="nav2__drop-link" href="#">Pricing</a>
+          <a class="nav2__drop-link" href="#">IRA Storage</a>
+          <div class="nav2__drop-label">Support</div>
+          <a class="nav2__drop-link" href="#">Contact Us</a>
+          <a class="nav2__drop-link" href="#">FAQs</a>
+        </div>
+      </div>
+
+    </nav>
+
+    <!-- Single CTA -->
+    <div class="nav2__actions">
+      <a class="btn btn--primary" href="#">Where to Buy</a>
+    </div>
+
+    <!-- Mobile hamburger -->
+    <button class="nav2__burger" type="button" aria-label="Open menu" id="nav2-open">
+      <svg style="width:22px;height:22px" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+    </button>
+
+  </div>
+</header>
+
+<!-- ============================================================
+     PAGE BODY
+     ============================================================ -->
+<div class="preview-page">
+  <div class="container">
+    <p class="preview-hint">↑ Click the nav items above · On mobile tap the menu button ↑</p>
+    <div class="preview-note">
+      <h3>What's different in this version</h3>
+      <ul>
+        <li><strong>Dark header throughout:</strong> The nav now matches the onyx hero and WTB sections — the whole page feels cohesive instead of switching from light to dark.</li>
+        <li><strong>Gold seal as the brand anchor:</strong> The TxBD star seal is rendered in gold, making it the visual focal point of the header rather than just a decorative mark.</li>
+        <li><strong>Floating dropdown panels:</strong> Instead of flat boxes flush with the header, dropdowns float with a top gold accent line, rounded corners, and a deep shadow — more premium.</li>
+        <li><strong>Subtle separators between nav groups:</strong> Vertical dividers create natural grouping without adding heavy visual weight.</li>
+        <li><strong>Single CTA:</strong> Only "Where to Buy" — no competing ghost button.</li>
+        <li><strong>Support merged into Account:</strong> Contact Us and FAQs live at the bottom of the Account dropdown under a "Support" label — one less top-level item.</li>
+        <li><strong>Mobile — full-screen overlay:</strong> Instead of a side drawer, the menu slides down from the top covering the full screen. Large serif headings for each category, gold left-border on the active group.</li>
+        <li><strong>Mobile — single "Where to Buy" CTA</strong> pinned to the bottom of the overlay.</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================================
+     FULL-SCREEN MOBILE OVERLAY
+     ============================================================ -->
+<div class="nav2-ov" id="nav2-ov" aria-label="Menu">
+
+  <div class="nav2-ov__head">
+    <div class="nav2-ov__brand">
+      <svg class="nav2-ov__seal" viewBox="0 0 48 48" fill="none">
+        <circle cx="24" cy="24" r="22" stroke="var(--gold-400)" stroke-width="1.5"/>
+        <circle cx="24" cy="24" r="17" stroke="var(--gold-400)" stroke-width="1"/>
+        <path fill="var(--gold-400)" d="M24 12l3.4 8.2 8.6.7-6.3 5.9 1.6 8.7L24 31.2l-7.3 4.3 1.6-8.7-6.3-5.9 8.6-.7z"/>
+      </svg>
+      <span class="nav2-ov__name">Texas <em>Bullion</em> Depository</span>
+    </div>
+    <button class="nav2-ov__close" type="button" aria-label="Close" id="nav2-close">
+      <svg style="width:18px;height:18px" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 6l12 12M18 6L6 18"/></svg>
+    </button>
+  </div>
+
+  <div class="nav2-ov__body">
+    <div class="nav2-ov__group">
+      <button class="nav2-ov__toggle" type="button">Coins &amp; Redbacks <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></button>
+      <div class="nav2-ov__sub">
+        <a href="#">The Commemorative Series</a>
+        <a href="#">2025 &amp; 2026 Collections</a>
+        <a href="#">2026 1 oz Gold Lone Star</a>
+        <a href="#">Modern Redbacks</a>
+        <a href="#">Where to Buy</a>
+      </div>
+    </div>
+    <div class="nav2-ov__group">
+      <button class="nav2-ov__toggle" type="button">The Series <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></button>
+      <div class="nav2-ov__sub">
+        <a href="#">Series Overview</a>
+        <a href="#">Meet the Designer</a>
+        <a href="#">First in Class</a>
+        <a href="#">FAQs</a>
+      </div>
+    </div>
+    <div class="nav2-ov__group">
+      <button class="nav2-ov__toggle" type="button">The Depository <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></button>
+      <div class="nav2-ov__sub">
+        <a href="#">Why Use Us?</a>
+        <a href="#">First in Class</a>
+        <a href="#">Depository Administrator</a>
+        <a href="#">Information about Leander, Texas</a>
+      </div>
+    </div>
+    <div class="nav2-ov__group">
+      <button class="nav2-ov__toggle" type="button">Account <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></button>
+      <div class="nav2-ov__sub">
+        <a href="#">Items Required to Open</a>
+        <a href="#">Account Holder Agreement</a>
+        <a href="#">Account Types</a>
+        <a href="#">Pricing</a>
+        <a href="#">IRA Storage</a>
+        <a href="#">Contact Us</a>
+        <a href="#">FAQs</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="nav2-ov__foot">
+    <a class="btn btn--primary btn--lg btn--block" href="#">Where to Buy</a>
+  </div>
+
+</div>
+
+<script>
+  // Desktop nav — click to open/close
+  document.querySelectorAll('.nav2__item').forEach(function(item) {
+    var btn = item.querySelector('.nav2__btn');
+    if (!btn) return;
+    btn.addEventListener('click', function(e) {
+      e.stopPropagation();
+      var isOpen = item.classList.contains('is-open');
+      document.querySelectorAll('.nav2__item.is-open').forEach(function(o) { o.classList.remove('is-open'); });
+      item.classList.toggle('is-open', !isOpen);
+    });
+  });
+  document.addEventListener('click', function() {
+    document.querySelectorAll('.nav2__item.is-open').forEach(function(o) { o.classList.remove('is-open'); });
+  });
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') document.querySelectorAll('.nav2__item.is-open').forEach(function(o) { o.classList.remove('is-open'); });
+  });
+
+  // Mobile overlay open/close
+  var ov = document.getElementById('nav2-ov');
+  document.getElementById('nav2-open').addEventListener('click', function() {
+    ov.classList.add('is-open');
+    document.body.style.overflow = 'hidden';
+  });
+  document.getElementById('nav2-close').addEventListener('click', function() {
+    ov.classList.remove('is-open');
+    document.body.style.overflow = '';
+  });
+
+  // Mobile overlay accordions
+  document.querySelectorAll('.nav2-ov__toggle').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      var group = btn.closest('.nav2-ov__group');
+      var sub = group.querySelector('.nav2-ov__sub');
+      var open = group.classList.toggle('is-open');
+      sub.style.maxHeight = open ? sub.scrollHeight + 'px' : '0';
+    });
+  });
+
+  // Sticky header state
+  var nav2 = document.querySelector('.nav2');
+  window.addEventListener('scroll', function() {
+    nav2.style.boxShadow = window.scrollY > 8 ? '0 6px 32px rgba(0,0,0,.55)' : '0 4px 32px rgba(0,0,0,.45)';
+  }, { passive: true });
+</script>
+</body>
+</html>

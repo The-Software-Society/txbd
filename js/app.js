@@ -37,15 +37,20 @@
     });
   });
 
-  /* ---- Mega / dropdown nav: click + keyboard (hover handled by CSS) ---- */
+  /* ---- Mega / dropdown nav: hover (desktop) ---- */
+  var isMobile = function () { return window.innerWidth < 1024; };
   document.querySelectorAll('.mainnav__item').forEach(function (item) {
-    var link = item.querySelector('.mainnav__link');
-    if (!link || !item.querySelector('.mega, .menu')) return;
-    link.addEventListener('click', function (e) {
-      e.preventDefault();
-      var isOpen = item.classList.contains('is-open');
+    if (!item.querySelector('.mega, .menu')) return;
+    var timer;
+    item.addEventListener('mouseenter', function () {
+      if (isMobile()) return;
+      clearTimeout(timer);
       document.querySelectorAll('.mainnav__item.is-open').forEach(function (o) { o.classList.remove('is-open'); });
-      item.classList.toggle('is-open', !isOpen);
+      item.classList.add('is-open');
+    });
+    item.addEventListener('mouseleave', function () {
+      if (isMobile()) return;
+      timer = setTimeout(function () { item.classList.remove('is-open'); }, 120);
     });
   });
   document.addEventListener('click', function (e) {

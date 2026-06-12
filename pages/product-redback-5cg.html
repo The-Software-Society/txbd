@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>2026 1 oz Gold State of Texas Lone Star Commemorative Coin, Texas Bullion Depository</title>
+<title>5 Centigram Texas Lonestar Gold Note — Longhorn Steer, Texas Bullion Depository</title>
 <script>document.documentElement.className += ' has-js';</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -14,6 +14,170 @@
 <link rel="stylesheet" href="../css/pages.css">
 <link rel="stylesheet" href="../css/responsive.css">
 <link rel="stylesheet" href="../css/animations.css">
+<style>
+  /* ---- Redback gallery: landscape note images ---- */
+  .redback-gallery {
+    display: flex;
+    flex-direction: column;
+    gap: var(--sp-4);
+  }
+  .redback-gallery__main {
+    position: relative;
+    background: var(--gray-50);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    aspect-ratio: 16 / 9;
+  }
+  .redback-gallery__main img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    padding: var(--sp-6);
+  }
+  .redback-gallery__zoom {
+    position: absolute;
+    bottom: var(--sp-4);
+    right: var(--sp-4);
+    width: 36px; height: 36px;
+    background: var(--white);
+    border-radius: var(--radius-sm);
+    display: grid; place-items: center;
+    box-shadow: var(--shadow-sm);
+    cursor: pointer;
+    color: var(--slate-600);
+  }
+  .redback-gallery__thumbs {
+    display: flex;
+    gap: var(--sp-3);
+  }
+  .redback-gthumb {
+    flex: 1;
+    aspect-ratio: 16 / 9;
+    background: var(--gray-50);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    border: 2px solid transparent;
+    cursor: pointer;
+    transition: border-color .15s;
+  }
+  .redback-gthumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    padding: var(--sp-2);
+  }
+  .redback-gthumb--active { border-color: var(--gold-500); }
+  .redback-gthumb:hover:not(.redback-gthumb--active) { border-color: var(--gray-300); }
+
+  /* ---- Redback note specs ---- */
+  .note-proof {
+    display: flex;
+    align-items: center;
+    gap: var(--sp-3);
+    padding: var(--sp-4) var(--sp-5);
+    background: var(--gold-100);
+    border: 1px solid var(--gold-400);
+    border-radius: var(--radius-md);
+    margin-top: var(--sp-6);
+    font-size: var(--fs-sm);
+    color: var(--gold-700);
+    font-weight: 600;
+  }
+  .note-proof svg { flex-shrink: 0; color: var(--gold-600); }
+
+  /* ---- Bundle upsell ---- */
+  .bundle-upsell {
+    margin-top: var(--sp-6);
+    border: 1px solid var(--color-border-soft);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+  }
+  .bundle-upsell__head {
+    background: var(--gray-50);
+    padding: var(--sp-4) var(--sp-5);
+    font-size: var(--fs-xs);
+    font-weight: 700;
+    letter-spacing: var(--ls-eyebrow);
+    text-transform: uppercase;
+    color: var(--gray-500);
+  }
+  .bundle-upsell__options {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+  .bundle-option {
+    display: flex;
+    align-items: center;
+    gap: var(--sp-4);
+    padding: var(--sp-4) var(--sp-5);
+    border-bottom: 1px solid var(--color-border-soft);
+    cursor: pointer;
+    transition: background .15s;
+  }
+  .bundle-option:last-child { border-bottom: none; }
+  .bundle-option:hover { background: var(--gray-50); }
+  .bundle-option__radio {
+    width: 18px; height: 18px;
+    border-radius: 50%;
+    border: 2px solid var(--gray-300);
+    flex-shrink: 0;
+    display: grid; place-items: center;
+  }
+  .bundle-option--selected .bundle-option__radio {
+    border-color: var(--gold-500);
+    background: var(--gold-500);
+  }
+  .bundle-option--selected .bundle-option__radio::after {
+    content: "";
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--onyx-900);
+  }
+  .bundle-option__info { flex: 1; }
+  .bundle-option__label { font-weight: 600; font-size: var(--fs-sm); color: var(--color-ink); }
+  .bundle-option__sub { font-size: var(--fs-xs); color: var(--gray-500); margin-top: 2px; }
+  .bundle-option__badge {
+    font-size: 11px; font-weight: 700;
+    background: var(--gold-500); color: var(--onyx-900);
+    border-radius: var(--radius-pill);
+    padding: 2px 8px;
+  }
+
+  /* ---- Redback story band (instead of designer band) ---- */
+  .story-band {
+    background: var(--onyx-800);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+  .story-band__body {
+    padding: var(--sp-12) var(--sp-10);
+    color: var(--color-on-dark);
+  }
+  .story-band__body h2 { color: #fff; margin-top: var(--sp-3); }
+  .story-band__body p { color: var(--color-on-dark-muted); line-height: var(--lh-body); }
+  .story-band__media {
+    background: var(--onyx-700);
+    position: relative;
+    overflow: hidden;
+    min-height: 360px;
+  }
+  .story-band__media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+  }
+  @media (max-width: 768px) {
+    .story-band { grid-template-columns: 1fr; }
+    .story-band__media { min-height: 220px; order: -1; }
+    .story-band__body { padding: var(--sp-8) var(--sp-6); }
+    .redback-gallery__thumbs { gap: var(--sp-2); }
+  }
+</style>
 </head>
 <body>
 
@@ -52,16 +216,13 @@
             <a class="mega__link mega__link--child" href="#">2026 1 oz Gold Lone Star</a>
             <a class="mega__link mega__link--child" href="#">2026 ½ oz Gold Lone Star</a>
             <a class="mega__link mega__link--child" href="#">2026 1 oz Silver Lone Star</a>
-            
           </div>
           <div class="mega__col">
             <div class="mega__label">Modern Redbacks</div>
-            <a class="mega__link" href="#">1 Centigram Redback</a>
-            <a class="mega__link" href="#">5 Centigram Redback</a>
-            <a class="mega__link" href="#">10 Centigram Redback</a>
-            <a class="mega__link" href="#">20 Centigram Redback</a>
-            <a class="mega__link" href="#">50 Centigram Redback</a>
-            <a class="mega__link" href="#">100 Centigram Redback</a>
+            <a class="mega__link" href="#">The Modern Redback Story</a>
+            <a class="mega__link mega__link--child" href="#">5cg Lonestar Gold Note <small>Longhorn Steer</small></a>
+            <a class="mega__link mega__link--child" href="#">20cg Lonestar Gold Note <small>Texas State Capitol</small></a>
+            <a class="mega__link mega__link--child" href="#">100cg Lonestar Gold Note <small>Alamo Mission</small></a>
           </div>
           <div class="mega__col">
             <div class="mega__label">Learn &amp; Buy</div>
@@ -71,9 +232,9 @@
             <a class="mega__link" href="#">FAQs</a>
           </div>
           <div class="mega__feature">
-                        <img src="../assets/img/group-2026-coins.jpg" alt="The 2026 Lone Star collection">
-            <h4>The 2026 Lone Star Collection</h4>
-            <p>Lady Liberty beside the Texas Capitol, the new perennial design.</p>
+            <img src="../assets/img/group-redbacks.png" alt="The Modern Redback collection">
+            <h4>The Modern Redback Collection</h4>
+            <p>Currency-style gold notes, each containing real 24K gold. A Texas original.</p>
             <a href="#">Explore the collection <svg class="ico" style="width:16px;height:16px" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
           </div>
         </div></div>
@@ -121,42 +282,80 @@
   <nav class="breadcrumb" aria-label="Breadcrumb">
     <a href="#">Home</a><span class="breadcrumb__sep">/</span>
     <a href="#">Coins &amp; Redbacks</a><span class="breadcrumb__sep">/</span>
-    <a href="#">2026 Collection</a><span class="breadcrumb__sep">/</span>
-    <span aria-current="page">1 oz Gold Lone Star</span>
+    <a href="#">Modern Redbacks</a><span class="breadcrumb__sep">/</span>
+    <span aria-current="page">5cg Lonestar Gold Note</span>
   </nav>
 </div>
 
 <main>
 <!-- ===== PDP hero ===== -->
 <section class="container pdp-hero">
-  <div class="gallery reveal">
-    <div class="gallery__thumbs">
-      <div class="gthumb gthumb--active"><img src="../assets/img/coin-2026-gold-1oz-obv.jpg" alt="Obverse, Lady Liberty and the Texas State Capitol"></div>
-      <div class="gthumb"><img src="../assets/img/coin-2026-gold-1oz-rev.jpg" alt="Reverse, Official Coat of Arms of Texas"></div>
-      <div class="gthumb"><img src="../assets/img/coin-2026-gold-1oz-certilock-obv.jpg" alt="Certi-Lock packaging"></div>
+
+  <!-- Gallery — landscape layout for notes -->
+  <div class="redback-gallery reveal">
+    <div class="redback-gallery__main" id="rb-main">
+      <img id="rb-main-img" src="../assets/img/redback-5cg-obv.jpg" alt="5cg Texas Lonestar Gold Note — Longhorn Steer, obverse">
+      <span class="redback-gallery__zoom">
+        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4-4M11 8v6M8 11h6"/></svg>
+      </span>
     </div>
-    <div class="gallery__main">
-      <img src="../assets/img/coin-2026-gold-1oz-obv.jpg" alt="2026 1 oz Gold State of Texas Lone Star, obverse">
-      <span class="gallery__zoom"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4-4M11 8v6M8 11h6"/></svg></span>
+    <div class="redback-gallery__thumbs">
+      <div class="redback-gthumb redback-gthumb--active" onclick="rbSwap(this,'../assets/img/redback-5cg-obv.jpg','5cg Lonestar Gold Note — obverse')">
+        <img src="../assets/img/redback-5cg-obv.jpg" alt="Obverse — Longhorn Steer">
+      </div>
+      <div class="redback-gthumb" onclick="rbSwap(this,'../assets/img/redback-5cg-rev.jpg','5cg Lonestar Gold Note — reverse')">
+        <img src="../assets/img/redback-5cg-rev.jpg" alt="Reverse">
+      </div>
+      <div class="redback-gthumb" onclick="rbSwap(this,'../assets/img/redback-5cg-bundle.jpg','5cg Lonestar Gold Note — bundle of 100')">
+        <img src="../assets/img/redback-5cg-bundle.jpg" alt="Bundle of 100">
+      </div>
     </div>
   </div>
 
+  <!-- Buy panel -->
   <div class="buy reveal">
     <div class="buy__tags">
-      <span class="badge badge--gold badge--dot">.9999 Fine Gold</span>
-      <span class="badge badge--silver">24k · Bullion</span>
+      <span class="badge badge--gold badge--dot">24K Pure Gold</span>
+      <span class="badge badge--onyx">Modern Redback</span>
     </div>
-    <h1 class="buy__title">2026 1 oz Gold State of Texas Lone Star</h1>
-    <p class="buy__desc">Celebrate a defining moment in Texas history with this beautifully crafted 2026 1 oz Gold State of Texas Lone Star. Struck in .9999 fine gold (24k), this commemorative piece captures the strength, independence, and heritage of the Lone Star State through detailed, meaningful design.</p>
+    <h1 class="buy__title">5 Centigram Texas Lonestar Gold Note</h1>
+    <p class="buy__desc">A piece of Texas history you can hold. Each Lonestar Gold Note is a currency-style collectible containing real 24-karat gold — made in the USA, issued under the authority of the Texas Bullion Depository. The 5cg note features the iconic Longhorn Steer against a West Texas landscape, a bold symbol of the Lone Star State's enduring spirit.</p>
 
-    <div class="buy__facts">
-      <div class="fact"><div class="fact__k">Metal</div><div class="fact__v">.9999 Gold</div></div>
-      <div class="fact"><div class="fact__k">Weight</div><div class="fact__v">1 troy oz</div></div>
-      <div class="fact"><div class="fact__k">Diameter</div><div class="fact__v">32 mm</div></div>
-      <div class="fact"><div class="fact__k">Finish</div><div class="fact__v">Bullion</div></div>
+    <div class="note-proof">
+      <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l8 4v6c0 5-3.5 8-8 10-4.5-2-8-5-8-10V6z"/></svg>
+      Contains 5 centigrams of real, physical 24K gold · Verified by the Texas Bullion Depository
     </div>
 
-    <div class="buy__cta">
+    <div class="buy__facts" style="margin-top:var(--sp-6)">
+      <div class="fact"><div class="fact__k">Gold Content</div><div class="fact__v">5 centigrams</div></div>
+      <div class="fact"><div class="fact__k">Purity</div><div class="fact__v">99.99% (24K)</div></div>
+      <div class="fact"><div class="fact__k">Design</div><div class="fact__v">Longhorn Steer</div></div>
+      <div class="fact"><div class="fact__k">Made in</div><div class="fact__v">USA</div></div>
+    </div>
+
+    <!-- Bundle selector -->
+    <div class="bundle-upsell">
+      <div class="bundle-upsell__head">Select Quantity</div>
+      <div class="bundle-upsell__options">
+        <div class="bundle-option bundle-option--selected" onclick="selectBundle(this)">
+          <div class="bundle-option__radio"></div>
+          <div class="bundle-option__info">
+            <div class="bundle-option__label">Single Note</div>
+            <div class="bundle-option__sub">1 × 5cg Gold Note</div>
+          </div>
+        </div>
+        <div class="bundle-option" onclick="selectBundle(this)">
+          <div class="bundle-option__radio"></div>
+          <div class="bundle-option__info">
+            <div class="bundle-option__label">Bundle of 100</div>
+            <div class="bundle-option__sub">100 × 5cg Gold Note · 5 grams total gold</div>
+          </div>
+          <span class="bundle-option__badge">Save 5%</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="buy__cta" style="margin-top:var(--sp-6)">
       <a class="btn btn--primary btn--lg btn--block" href="#retailers">Buy from Authorized Retailers</a>
       <span class="buy__cta-note">Sold through 6 authorized retailers · No account required</span>
     </div>
@@ -171,52 +370,65 @@
 <!-- ===== Details ===== -->
 <section class="container pdp-details">
   <div class="prose reveal">
-    <h2>A Design Rooted in Texas Heritage</h2>
-    <p>The 2026 1 oz Gold State of Texas Lone Star features a design that honors both Texas history and identity.</p>
-    <p>The <strong>obverse</strong> presents a graceful, stylized depiction of Lady Liberty seated beside the Texas State Capitol. With elegant detail, Lady Liberty extends an arm outward, holding the Lone Star above the Capitol dome, symbolizing guidance, aspiration, and the enduring ideals of freedom. The architectural rendering of the Capitol anchors the design in Texas heritage, while the placement of the year &lsquo;2026&rsquo; below provides a balanced and refined finish.</p>
-    <p>The <strong>reverse</strong> displays the official Coat of Arms of Texas, a hallmark of the series. Centered by the Lone Star, symbolizing Texas independence, the design is encircled by live oak and olive branches, representing strength, resilience, peace, and prosperity. The inscriptions &ldquo;THE STATE OF TEXAS&rdquo; and &ldquo;FRIENDSHIP&rdquo; reinforce the commemorative coin&rsquo;s connection to Texas heritage.</p>
+    <h2>Real Gold. Texas-Issued. Currency Style.</h2>
+    <p>The Modern Redback is a first-of-its-kind gold note — a collectible that looks and feels like currency, but contains actual 24-karat gold embedded within a proprietary, patent-pending format. Made in the USA, each note is issued under the authority of the Texas Bullion Depository, the nation's first state-administered precious metals depository.</p>
 
-    <h3>What the Branches Represent on the Texas Seal</h3>
-    <p>The branches on the reverse are not merely decorative; they carry deep symbolic meaning tied to Texas identity and values. The <strong>olive branch</strong> on the left represents peace, reflecting a desire for harmony and diplomacy. The <strong>live oak branch</strong> on the right represents strength, endurance, and resilience, symbolizing the toughness of the Texas spirit. Together, they convey that Texas stands for both strength and peace: resilient in defense, yet grounded in unity and stability.</p>
+    <p>The <strong>5 Centigram Lonestar Gold Note</strong> pays tribute to one of Texas's most iconic symbols: the Longhorn Steer. Set against the vast, rugged West Texas landscape, the design captures the spirit of independence and resilience that defines the Lone Star State. The denomination — 5 — appears in bold, with the gold content prominently declared: <em>Five Centigrams Pure 24K Gold.</em></p>
 
-    <h3>About the Series</h3>
-    <p>This commemorative series, authorized by the State of Texas and produced under the Texas Bullion Depository&reg;, combines exceptional design, .9999 fine gold purity, and enduring Texan symbolism. It stands as a powerful tribute to the heritage, independence, and lasting legacy of the Lone Star State.</p>
+    <p>The <strong>reverse</strong> carries the Texas Bullion Depository mark and serial number, affirming authenticity and gold content. Each note includes a unique AA-series serial number, making every piece individually identifiable.</p>
 
-    <h3>Purity</h3>
-    <p>State of Texas Lone Stars are minted from precious metals of the highest purity, comparable to sovereign issues from the U.S. Mint, Royal Canadian Mint, and The Royal Mint. Gold State of Texas Coins are 24k, containing 99.99% pure gold.</p>
+    <h3>What Makes a Modern Redback</h3>
+    <p>Unlike traditional gold coins or bars, the Modern Redback presents gold in a currency-inspired format — the first of its kind issued by a U.S. state agency. The gold is real, the design is distinctly Texan, and the format is unlike anything else in the precious metals market. Each denomination in the series features a different iconic Texas landmark or symbol, making the complete collection a portrait of the Lone Star State.</p>
+
+    <h3>The Complete Redback Series</h3>
+    <p>The Modern Redback collection spans three denominations, each with its own Texas subject matter:</p>
+    <ul>
+      <li><strong>5 Centigrams</strong> — Longhorn Steer · West Texas landscape</li>
+      <li><strong>20 Centigrams</strong> — Texas State Capitol · Austin, Texas</li>
+      <li><strong>100 Centigrams</strong> — Alamo Mission · San Antonio, Texas</li>
+    </ul>
 
     <!-- Accordions -->
     <div class="accordion" style="margin-top:var(--sp-10)">
       <div class="acc is-open">
         <button class="acc__head" type="button">
-          <span class="acc__title">Secure Certi-Lock&reg; Packaging</span>
+          <span class="acc__title">Gold Content &amp; Authenticity</span>
           <span class="acc__icon"></span>
         </button>
         <div class="acc__body"><div class="acc__body-inner">
-          <p>Available in specialized tamper-evident Certi-Lock&reg; packaging, each 2026 1 oz Gold State of Texas Lone Star is securely encapsulated to help protect its condition and verify authenticity through advanced digital technology. Designed for added confidence and peace of mind, this premium packaging enhances both the security and collectability of the coin. <a href="#" style="color:var(--gold-700);font-weight:700">Learn more &rsaquo;</a></p>
+          <p>Each 5 Centigram Texas Lonestar Gold Note contains 0.05 grams of 99.99% pure (24-karat) gold. The gold is embedded within the note using a proprietary, patent-pending process developed in the USA. Gold content and purity are stated on the face of every note and backed by the Texas Bullion Depository. <a href="#" style="color:var(--gold-700);font-weight:700">Learn more about verification &rsaquo;</a></p>
         </div></div>
       </div>
       <div class="acc">
         <button class="acc__head" type="button">
-          <span class="acc__title">The Enduring Reverse</span>
+          <span class="acc__title">Bundle Options &amp; Gifting</span>
           <span class="acc__icon"></span>
         </button>
         <div class="acc__body"><div class="acc__body-inner">
-          <p>While obverse designs may change, the reverse of every Texas commemorative coin remains constant, the defining hallmark of the series. At its center is the Official Coat of Arms of Texas, framed by the live oak and olive branches and the state motto, &ldquo;FRIENDSHIP,&rdquo; establishing continuity across all future releases.</p>
+          <p>The 5cg Lonestar Gold Note is available as a single note or in bundles of 100. Bundles are banded and packaged for easy storage and gifting. With 5 grams of total gold content, a bundle of 100 represents a meaningful accumulation of physical gold in a distinctive Texas format.</p>
+        </div></div>
+      </div>
+      <div class="acc">
+        <button class="acc__head" type="button">
+          <span class="acc__title">Not Legal Tender</span>
+          <span class="acc__icon"></span>
+        </button>
+        <div class="acc__body"><div class="acc__body-inner">
+          <p>The Modern Redback is not legal tender and is not intended to circulate as currency. It is issued solely for its commemorative, collectible, and gold-content value. The currency-inspired format is a design choice that honors Texas's historical connection to the gold standard era, including the era of paper currency redeemable in gold.</p>
         </div></div>
       </div>
     </div>
 
-    <!-- Collapsible disclaimer -->
+    <!-- Disclaimer -->
     <div class="disclaimer" style="margin-top:var(--sp-8)">
       <button class="disclaimer__head" type="button">
         <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8h.01M11 12h1v4h1"/></svg>
-        Important legal disclaimer &amp; pre-order notice
+        Important legal disclaimer
         <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
       </button>
       <div class="disclaimer__body"><div class="disclaimer__body-inner">
-        <p>State of Texas commemorative coins are not intended as and are not legal tender in the United States or any foreign country. The products are issued solely for their commemorative, numismatic, and collectible value, not as an investment vehicle. The purchase of the commemorative coin carries inherent risk. There is no guarantee that a resale market currently exists or will exist in the future. Purchasers may be unable to resell this item for the price paid. Neither Texas Bullion Depository&reg; nor any of its agents provides investment, financial, or tax advice regarding your purchase. Please consult with your own independent financial, legal, or investment advisor before making a purchase.</p>
-        <p style="margin-top:8px">*Preliminary digital renderings shown for illustrative purposes only and may not reflect the final product. Products are currently available for pre-order only.</p>
+        <p>Texas Lonestar Gold Notes are not intended as and are not legal tender in the United States or any foreign country. The products are issued solely for their commemorative, collectible, and gold-content value, not as an investment vehicle. The purchase carries inherent risk. There is no guarantee that a resale market currently exists or will exist in the future. Purchasers may be unable to resell this item for the price paid. Neither Texas Bullion Depository&reg; nor any of its agents provides investment, financial, or tax advice regarding your purchase. Please consult your own independent financial, legal, or investment advisor before making a purchase.</p>
+        <p style="margin-top:8px">U.S. &amp; International Patents Pending. AURUM&trade;. Made in the USA.</p>
       </div></div>
     </div>
   </div>
@@ -226,12 +438,14 @@
     <div class="reveal">
       <div class="aside-title">Specifications</div>
       <div class="specs">
-        <div class="specs__row"><div class="specs__k">Metal</div><div class="specs__v">.9999 fine gold (24k)</div></div>
-        <div class="specs__row"><div class="specs__k">Weight</div><div class="specs__v">1 troy oz</div></div>
-        <div class="specs__row"><div class="specs__k">Diameter</div><div class="specs__v">32 mm</div></div>
-        <div class="specs__row"><div class="specs__k">Finish</div><div class="specs__v">Bullion</div></div>
-        <div class="specs__row"><div class="specs__k">Designer</div><div class="specs__v">Joel Iskowitz</div></div>
-        <div class="specs__row"><div class="specs__k">Year</div><div class="specs__v">2026</div></div>
+        <div class="specs__row"><div class="specs__k">Gold Content</div><div class="specs__v">5 centigrams (0.05 g)</div></div>
+        <div class="specs__row"><div class="specs__k">Purity</div><div class="specs__v">99.99% pure 24K gold</div></div>
+        <div class="specs__row"><div class="specs__k">Design Subject</div><div class="specs__v">Longhorn Steer</div></div>
+        <div class="specs__row"><div class="specs__k">Denomination</div><div class="specs__v">5 Centigrams</div></div>
+        <div class="specs__row"><div class="specs__k">Format</div><div class="specs__v">Currency-style note</div></div>
+        <div class="specs__row"><div class="specs__k">Origin</div><div class="specs__v">Made in the USA</div></div>
+        <div class="specs__row"><div class="specs__k">Issuer</div><div class="specs__v">Texas Bullion Depository</div></div>
+        <div class="specs__row"><div class="specs__k">Series</div><div class="specs__v">Modern Redback</div></div>
       </div>
     </div>
 
@@ -256,66 +470,57 @@
   </aside>
 </section>
 
-<!-- ===== Designer band ===== -->
+<!-- ===== The Modern Redback Story band ===== -->
 <section class="section">
   <div class="container">
-    <div class="designer-band reveal">
-      <div class="designer-band__inner">
-        <div class="designer-band__media">
-          <div class="designer-band__photo"><img src="../assets/img/joel-iskowitz.jpg" alt="Master medallic artist Joel Iskowitz"></div>
-          <span class="designer-band__tag">Designed by</span>
+    <div class="story-band reveal">
+      <div class="story-band__body">
+        <span class="eyebrow" style="color:var(--gold-400)">The Modern Redback</span>
+        <h2>A Texas Original</h2>
+        <p>In the 1800s, Texas issued its own paper currency — notes redeemable in gold, backed by the Republic and later the State of Texas. The original "Redbacks" were among the first paper money in American history tied directly to a state's gold reserves.</p>
+        <p>The Modern Redback revives that tradition for a new era. Currency-style notes, issued by the Texas Bullion Depository, each containing real 24-karat gold — made in the USA with a proprietary, patent-pending process. A collector's piece. A Texas statement.</p>
+        <div style="margin-top:var(--sp-8)">
+          <a class="btn btn--primary" href="#">Read the Full Story</a>
         </div>
-        <div class="designer-band__body">
-          <span class="eyebrow" style="color:var(--gold-400)">Meet the Designer</span>
-          <h2>Joel Iskowitz</h2>
-          <p class="designer-band__role">Master Medallic Artist · U.S. Mint Designer</p>
-          <p>For more than three decades, Joel Iskowitz earned worldwide recognition for merging historical authenticity with timeless artistic expression, becoming one of the most celebrated designers in modern numismatic history. The 2026 State of Texas Lone Star carries his vision into a new chapter of Texas heritage.</p>
-          <ul class="designer-band__creds">
-            <li><svg class="ico" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.7 6.6L22 9.3l-5 4.7 1.3 7L12 17.8 5.7 21 7 14 2 9.3l7.3-.7z"/></svg>U.S. Mint — Arizona &amp; District of Columbia State Quarters</li>
-            <li><svg class="ico" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.7 6.6L22 9.3l-5 4.7 1.3 7L12 17.8 5.7 21 7 14 2 9.3l7.3-.7z"/></svg>Reverse of the 2009 Lincoln Bicentennial cent</li>
-            <li><svg class="ico" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.7 6.6L22 9.3l-5 4.7 1.3 7L12 17.8 5.7 21 7 14 2 9.3l7.3-.7z"/></svg>Medals, government artwork &amp; stamps for 40+ nations</li>
-          </ul>
-          <p class="designer-band__final">The 2026 Lone Star is among his final works — a lasting testament to his artistry.</p>
-          <div class="designer-band__actions">
-            <a class="btn btn--primary" href="#">Meet the Designer</a>
-          </div>
-        </div>
+      </div>
+      <div class="story-band__media">
+        <img src="../assets/img/lifestyle-redbacks-hat.png" alt="Modern Redbacks displayed with Texas heritage items">
       </div>
     </div>
   </div>
 </section>
 
-<!-- ===== Related variants ===== -->
+<!-- ===== Related — other denominations ===== -->
 <section class="section section--tint">
   <div class="container">
     <span class="eyebrow">Complete the Collection</span>
-    <h2 class="reveal" style="margin-top:var(--sp-3);margin-bottom:var(--sp-8)">Other 2026 Lone Star Weights &amp; Metals</h2>
+    <h2 class="reveal" style="margin-top:var(--sp-3);margin-bottom:var(--sp-8)">Other Modern Redback Denominations</h2>
     <div class="card-grid card-grid--3 reveal-stagger">
       <article class="card">
-        <div class="card__media"><img src="../assets/img/coin-2026-gold-half-obv.jpg" alt="2026 ½ oz Gold Lone Star"></div>
+        <div class="card__media"><img src="../assets/img/redback-20cg-obv.jpg" alt="20cg Texas Lonestar Gold Note — Texas State Capitol"></div>
         <div class="card__body">
-          <div class="card__tags"><span class="badge badge--gold">Gold</span><span class="badge badge--silver">½ oz</span></div>
-          <h3 class="card__title">2026 ½ oz Gold Lone Star</h3>
-          <p class="card__meta">.9999 fine gold · 25 mm · Bullion</p>
+          <div class="card__tags"><span class="badge badge--gold">24K Gold</span><span class="badge badge--silver">20cg</span></div>
+          <h3 class="card__title">20cg Lonestar Gold Note</h3>
+          <p class="card__meta">Texas State Capitol · 20 centigrams pure 24K gold</p>
           <a class="card__link" href="#">View details <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 6l6 6-6 6"/></svg></a>
         </div>
       </article>
       <article class="card">
-        <div class="card__media"><img src="../assets/img/coin-2026-silver-1oz-obv.jpg" alt="2026 1 oz Silver Lone Star"></div>
+        <div class="card__media"><img src="../assets/img/redback-100cg-obv.jpg" alt="100cg Texas Lonestar Gold Note — Alamo Mission"></div>
         <div class="card__body">
-          <div class="card__tags"><span class="badge badge--silver">Silver</span><span class="badge badge--silver">1 oz</span></div>
-          <h3 class="card__title">2026 1 oz Silver Lone Star</h3>
-          <p class="card__meta">.999 fine silver · 39 mm · Bullion</p>
+          <div class="card__tags"><span class="badge badge--gold">24K Gold</span><span class="badge badge--silver">100cg</span></div>
+          <h3 class="card__title">100cg Lonestar Gold Note</h3>
+          <p class="card__meta">Alamo Mission · 100 centigrams pure 24K gold</p>
           <a class="card__link" href="#">View details <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 6l6 6-6 6"/></svg></a>
         </div>
       </article>
       <article class="card">
-        <div class="card__media"><img src="../assets/img/coin-2026-gold-1oz-certilock-obv.jpg" alt="2026 1 oz Gold Lone Star Certi-Lock"></div>
+        <div class="card__media"><img src="../assets/img/lifestyle-coins-notes.png" alt="Full collection — coins and Redbacks together"></div>
         <div class="card__body">
-          <div class="card__tags"><span class="badge badge--gold">Gold</span><span class="badge badge--onyx">Certi-Lock</span></div>
-          <h3 class="card__title">2026 1 oz Gold Certi-Lock</h3>
-          <p class="card__meta">.9999 fine gold · 32 mm · Encapsulated</p>
-          <a class="card__link" href="#">View details <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 6l6 6-6 6"/></svg></a>
+          <div class="card__tags"><span class="badge badge--onyx">Collection</span></div>
+          <h3 class="card__title">Coins &amp; Redbacks Bundle</h3>
+          <p class="card__meta">The complete 2026 Texas Commemorative Series</p>
+          <a class="card__link" href="#">Explore the series <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 6l6 6-6 6"/></svg></a>
         </div>
       </article>
     </div>
@@ -329,8 +534,8 @@
       <div class="contact-banner__inner">
         <div class="contact-banner__text">
           <span class="eyebrow" style="color:var(--onyx-700)">Texas Bullion Depository</span>
-          <h2 style="margin-top:var(--sp-3)">Have questions about the series?</h2>
-          <p>Our Texas-based team can help you learn more about the State of Texas Commemorative Series and where to purchase.</p>
+          <h2 style="margin-top:var(--sp-3)">Have questions about the Modern Redback?</h2>
+          <p>Our Texas-based team can help you learn more about the Modern Redback collection, gold content, and where to purchase.</p>
           <div class="contact-banner__actions">
             <a class="btn btn--onyx btn--lg" href="#">Contact Us</a>
             <a class="btn btn--outline btn--lg" href="#" style="border-color:var(--onyx-700)">Find a Retailer</a>
@@ -377,7 +582,7 @@
     </div>
   </div>
   <div class="container site-footer__legal">
-    Disclaimer: State of Texas commemorative products are not intended as and are not legal tender in the United States or any foreign country. They are issued solely for their commemorative, numismatic, and collectible value, not as an investment vehicle. The purchase carries inherent risk and there is no guarantee that a resale market exists or will exist in the future. Neither Texas Bullion Depository&reg; nor any of its agents provides investment, financial, or tax advice. Please consult your own independent advisor before making a purchase.
+    Disclaimer: Texas Lonestar Gold Notes are not intended as and are not legal tender in the United States or any foreign country. They are issued solely for their commemorative, collectible, and gold-content value, not as an investment vehicle. The purchase carries inherent risk and there is no guarantee that a resale market exists or will exist in the future. Neither Texas Bullion Depository&reg; nor any of its agents provides investment, financial, or tax advice. Please consult your own independent advisor before making a purchase. U.S. &amp; International Patents Pending. AURUM&trade;.
   </div>
   <div class="container site-footer__bar">
     <span>&copy; 2026 Texas Bullion Depository. A Texas state agency.</span>
@@ -387,7 +592,7 @@
 
 <!-- ===== Sticky mobile buy bar ===== -->
 <div class="buybar">
-  <div class="buybar__label"><b>2026 1 oz Gold Lone Star</b><span>.9999 fine gold · 1 troy oz</span></div>
+  <div class="buybar__label"><b>5cg Lonestar Gold Note</b><span>24K pure gold · Longhorn Steer</span></div>
   <a class="btn btn--primary" href="#retailers">Where to Buy</a>
 </div>
 
@@ -422,5 +627,17 @@
 </aside>
 
 <script src="../js/app.js"></script>
+<script>
+function rbSwap(thumb, src, alt) {
+  document.querySelectorAll('.redback-gthumb').forEach(t => t.classList.remove('redback-gthumb--active'));
+  thumb.classList.add('redback-gthumb--active');
+  const main = document.getElementById('rb-main-img');
+  main.src = src; main.alt = alt;
+}
+function selectBundle(opt) {
+  document.querySelectorAll('.bundle-option').forEach(o => o.classList.remove('bundle-option--selected'));
+  opt.classList.add('bundle-option--selected');
+}
+</script>
 </body>
 </html>
