@@ -17,19 +17,29 @@ ZIP = 'txbd-figma-import.zip'
 
 CSS = ['tokens', 'base', 'components', 'pages', 'responsive', 'animations', 'import', 'states']
 
-# desktop pages: (source, output, label)
+# desktop pages: (source, output)
 DESKTOP = [
     ('pages/tokens.html', '00-brand-guidelines.html'),
     ('pages/home.html', '01-home.html'),
-    ('pages/product-2026-1oz-gold.html', '02-product-2026-1oz-gold.html'),
-    ('pages/first-in-class.html', '03-first-in-class.html'),
-    ('pages/info-template.html', '04-info-page-template.html'),
-    ('pages/states.html', '05-component-states.html'),
+    ('pages/content-commemorative-series.html', '02-commemorative-series.html'),
+    ('pages/content-collections.html', '03-collection-2026.html'),
+    ('pages/product-2026-1oz-gold.html', '04-product-2026-1oz-gold.html'),
+    ('pages/content-modern-redbacks.html', '05-modern-redbacks.html'),
+    ('pages/product-redback-5cg.html', '06-product-redback-5cg.html'),
+    ('pages/designer-joel-iskowitz.html', '07-designer-joel-iskowitz.html'),
+    ('pages/first-in-class.html', '08-first-in-class.html'),
+    ('pages/info-template.html', '09-info-page-template.html'),
+    ('pages/states.html', '10-component-states.html'),
 ]
 MOBILE = [
-    ('pages/home.html', '06-home-mobile.html'),
-    ('pages/product-2026-1oz-gold.html', '07-product-mobile.html'),
-    ('pages/first-in-class.html', '08-first-in-class-mobile.html'),
+    ('pages/home.html', '11-home-mobile.html'),
+    ('pages/content-commemorative-series.html', '12-commemorative-series-mobile.html'),
+    ('pages/content-collections.html', '13-collection-2026-mobile.html'),
+    ('pages/product-2026-1oz-gold.html', '14-product-2026-mobile.html'),
+    ('pages/content-modern-redbacks.html', '15-modern-redbacks-mobile.html'),
+    ('pages/product-redback-5cg.html', '16-product-redback-5cg-mobile.html'),
+    ('pages/designer-joel-iskowitz.html', '17-designer-mobile.html'),
+    ('pages/first-in-class.html', '18-first-in-class-mobile.html'),
 ]
 
 FLAT_NAV = ('<nav class="mainnav" aria-label="Primary">'
@@ -65,6 +75,24 @@ def unwrap(css, header):
         k += 1
     return css[j + 1:k]
 
+def unwrap_all(css, header):
+    out, start = [], 0
+    while True:
+        i = css.find(header, start)
+        if i < 0:
+            break
+        j = css.find('{', i); depth = 0; k = j
+        while k < len(css):
+            if css[k] == '{':
+                depth += 1
+            elif css[k] == '}':
+                depth -= 1
+                if depth == 0:
+                    break
+            k += 1
+        out.append(css[j + 1:k]); start = k + 1
+    return '\n'.join(out)
+
 resp = open('css/responsive.css', encoding='utf-8').read()
 mobile_force = (unwrap(resp, '@media (max-width: 900px)') + '\n' +
                 unwrap(resp, '@media (max-width: 768px)') + '\n' +
@@ -89,6 +117,13 @@ def make_jpg(base):
         h = round(im.height * 1400 / im.width); im = im.resize((1400, h), Image.LANCZOS)
     im.save(f'{DIST}/assets/img/{base}.jpg', 'JPEG', quality=82, optimize=True)
 
+def make_png(base):
+    # transparency-preserving copy (coin cut-outs etc.)
+    im = Image.open(asset_src[base]).convert('RGBA')
+    if im.width > 1200:
+        h = round(im.height * 1200 / im.width); im = im.resize((1200, h), Image.LANCZOS)
+    im.save(f'{DIST}/assets/img/{base}.png', 'PNG', optimize=True)
+
 # ---------- page transform ----------
 def transform(src, mobile=False):
     h = open(src, encoding='utf-8').read()
@@ -100,8 +135,11 @@ def transform(src, mobile=False):
     # real +/- bars for accordion icons (importer ignores the pseudo transform)
     h = h.replace('<span class="acc__icon"></span>', '<span class="acc__icon"><span class="bar-h"></span><span class="bar-v"></span></span>')
     h = h.replace('../css/', 'css/').replace('../assets/', 'assets/').replace('../index.html', '#')
-    # all images -> .jpg
-    h = re.sub(r'assets/img/([^"\')]+?)\.(png|jpe?g)', r'assets/img/\1.jpg', h)
+    # images -> .jpg, except transparent cut-outs (keep .png with alpha)
+    def _img(m):
+        base = m.group(1)
+        return f'assets/img/{base}.png' if base.endswith('-cut') else f'assets/img/{base}.jpg'
+    h = re.sub(r'assets/img/([^"\')]+?)\.(png|jpe?g)', _img, h)
     # ensure import.css linked (after page styles)
     links = '<link rel="stylesheet" href="css/import.css">\n'
     if mobile:
@@ -113,6 +151,13 @@ def transform(src, mobile=False):
     else:
         h = h.replace('</head>', links + '</head>')
     if mobile:
+        # unwrap THIS page's own inline @media blocks so its responsive
+        # rules fire inside the 390 frame (which renders at desktop viewport)
+        inline = '\n'.join(re.findall(r'<style[^>]*>(.*?)</style>', h, flags=re.S))
+        extra = (unwrap_all(inline, '@media (max-width: 900px)') + '\n' +
+                 unwrap_all(inline, '@media (max-width: 768px)'))
+        if extra.strip():
+            h = h.replace('</head>', '<style>\n' + extra + '\n</style>\n</head>')
         h = h.replace('<body>', '<body><div class="mobileframe">', 1)
         h = h.rsplit('</body>', 1)
         h = ('</div></body>').join(h) if len(h) == 2 else ''.join(h)
@@ -120,10 +165,13 @@ def transform(src, mobile=False):
     return h
 
 used_bases = set()
+used_png = set()
 def write_page(src, out, mobile=False):
     h = transform(src, mobile)
     for b in re.findall(r'assets/img/([^"\')]+)\.jpg', h):
         used_bases.add(b)
+    for b in re.findall(r'assets/img/([^"\')]+)\.png', h):
+        used_png.add(b)
     open(f'{DIST}/{out}', 'w', encoding='utf-8').write(h)
 
 for src, out in DESKTOP:
@@ -136,18 +184,32 @@ for b in sorted(used_bases):
         make_jpg(b)
     else:
         print('  ! missing asset for', b)
+for b in sorted(used_png):
+    if b in asset_src:
+        make_png(b)
+    else:
+        print('  ! missing png asset for', b)
 
 # README
 open(f'{DIST}/README.txt', 'w', encoding='utf-8').write(
     "TxBD Commemorative — Figma import bundle\n\n"
     "Import this zip in html.to.design (File tab -> upload .zip).\n"
-    "It imports every webpage:\n"
+    "Set the import viewport to Desktop (1440). One import brings in every page.\n\n"
+    "Desktop (00-10):\n"
     "  00 Brand guidelines (tokens & components)\n"
-    "  01 Home / 02 Product / 03 Content (desktop)\n"
-    "  04 Component states (hover/open/active)\n"
-    "  05-07 Home/Product/Content (mobile)\n\n"
-    "Set the import viewport to Desktop (1440). The 05-07 mobile pages are\n"
-    "hard-framed to 390px so they import as phone layouts in the same pass.\n")
+    "  01 Home\n"
+    "  02 The Commemorative Series\n"
+    "  03 The 2026 Lone Star Collection\n"
+    "  04 Product — 2026 1 oz Gold Lone Star\n"
+    "  05 Modern Redbacks\n"
+    "  06 Product — 5cg Modern Redback\n"
+    "  07 Designer — Joel Iskowitz\n"
+    "  08 First in Class (state oversight)\n"
+    "  09 Info / Educational page template\n"
+    "  10 Component states (hover/open/active)\n\n"
+    "Mobile (11-18): Home, Commemorative Series, 2026 Collection, Product 2026,\n"
+    "Modern Redbacks, Product 5cg Redback, Designer, First in Class.\n"
+    "These are hard-framed to 390px so they import as phone layouts in the same pass.\n")
 
 # ---------- zip ----------
 if os.path.exists(ZIP):

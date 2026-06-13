@@ -15,11 +15,19 @@ Series**. Built in HTML/CSS, delivered to Figma via **html.to.design** (a single
 | File | What it is |
 |---|---|
 | `home.html` | Homepage — hero, collections, splits, FAQ, where-to-buy |
+| `content-commemorative-series.html` | The Commemorative Series — program overview |
+| `content-collections.html` | The 2026 Lone Star Collection — overview + product cards |
 | `product-2026-1oz-gold.html` | Product Detail — gallery, specs, retailer block, **designer band** |
+| `content-modern-redbacks.html` | Modern Redbacks — the gold bills of Texas |
+| `product-redback-5cg.html` | Product Detail — 5 Centigram Modern Redback |
+| `designer-joel-iskowitz.html` | Designer — Joel Iskowitz ("Meet the Coin Designer") |
 | `first-in-class.html` | Info page example ("State Oversight / HB 483") built from the kit |
 | `info-template.html` | **Info / Educational page template** — labeled block kit ("the options") |
 | `tokens.html` | Brand guidelines — color + type + component reference |
 | `states.html` | Component states & interactions (hover / open / active) |
+
+`board.html` previews all of the above (desktop + mobile) on one canvas. `pages/nav-preview*.html`
+are internal nav explorations — not part of the client deliverable or the import zip.
 
 ## Structure
 ```
