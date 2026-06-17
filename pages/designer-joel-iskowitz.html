@@ -45,6 +45,13 @@
   .split--coin .split__media { background: transparent; box-shadow: none; aspect-ratio: 4 / 3.6; }
   .split--coin .split__media img { object-fit: contain; padding: clamp(6px, 1.5vw, 16px); }
 
+  /* Showcase gallery — a static display, not clickable cards:
+     no hover zoom, no gold hover-border, default cursor, permanent soft frame */
+  .media-band--showcase .media-band__item { cursor: default; box-shadow: 0 8px 26px rgba(0,0,0,.10); }
+  .media-band--showcase .media-band__item::after { box-shadow: inset 0 0 0 1px rgba(240,192,48,.30); }
+  .media-band--showcase .media-band__item:hover img { transform: none; }
+  .media-band--showcase .media-band__item:hover::after { box-shadow: inset 0 0 0 1px rgba(240,192,48,.30); }
+
   @media (max-width: 768px) {
     .coin-bleed { padding-block: var(--sp-14); }
     .coin-bleed__grid { grid-template-columns: 1fr; gap: var(--sp-6); }
@@ -216,7 +223,7 @@
         <h2 class="sect-head__title" style="margin-top:var(--sp-3)">The 2026 Lone Star Designs</h2>
       </div>
     </div>
-    <div class="media-band__grid reveal">
+    <div class="media-band__grid media-band--showcase reveal">
       <div class="media-band__item media-band__item--tall">
         <img src="../assets/img/coin-2026-gold-1oz-obv.jpg" alt="2026 Lone Star obverse design" style="object-fit:contain;padding:18px;background:var(--gray-50)">
         <span class="media-band__cap"><small>Obverse</small>Lady Liberty &amp; the Capitol</span>
