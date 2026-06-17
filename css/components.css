@@ -380,7 +380,7 @@
 .homehero::after { content:""; position: absolute; inset: 0; pointer-events: none;
   background: linear-gradient(180deg, rgba(0,0,0,.55), rgba(0,0,0,.9)), radial-gradient(70% 60% at 82% 0%, rgba(240,192,48,.20), transparent 60%); }
 .homehero__inner { position: relative; z-index: 1; text-align: center; padding-block: var(--sp-32) var(--sp-24); max-width: 64ch; margin-inline: auto; }
-.homehero h1 { color: var(--white); font-size: 4rem; }
+.homehero h1 { color: var(--white); font-size: clamp(2.4rem, 4.5vw, 4rem); }
 .homehero h1 em { font-style: italic; color: var(--gold-400); }
 .homehero__lead { color: var(--color-on-dark); font-size: var(--fs-lead); margin: var(--sp-5) auto 0; max-width: 48ch; line-height: 1.55; }
 .homehero__actions { display: flex; gap: var(--sp-3); justify-content: center; margin-top: var(--sp-8); flex-wrap: wrap; }
@@ -420,6 +420,9 @@
 .split--bleed:not(.split--reverse) .split__media { margin-left: calc(-1 * var(--gutter)); border-top-left-radius: 0; border-bottom-left-radius: 0; }
 .split--bleed.split--reverse .split__media { margin-right: calc(-1 * var(--gutter)); border-top-right-radius: 0; border-bottom-right-radius: 0; }
 .split__media:hover img { transform: scale(1.04); }
+/* Coin cut-out variant — contain image with padding so coin is never clipped */
+.split--coin .split__media { background: var(--white); box-shadow: var(--shadow-lg); }
+.split--coin .split__media img { object-fit: contain; object-position: center; padding: var(--sp-6); }
 .split__body h2 { margin-top: var(--sp-3); }
 .split__body p { margin-top: var(--sp-4); color: var(--color-ink-soft); }
 .split__list { margin-top: var(--sp-6); display: grid; gap: var(--sp-4); padding: 0; }
