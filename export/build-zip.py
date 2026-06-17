@@ -22,24 +22,26 @@ DESKTOP = [
     ('pages/tokens.html', '00-brand-guidelines.html'),
     ('pages/home.html', '01-home.html'),
     ('pages/content-commemorative-series.html', '02-commemorative-series.html'),
-    ('pages/content-collections.html', '03-collection-2026.html'),
-    ('pages/product-2026-1oz-gold.html', '04-product-2026-1oz-gold.html'),
-    ('pages/content-modern-redbacks.html', '05-modern-redbacks.html'),
-    ('pages/product-redback-5cg.html', '06-product-redback-5cg.html'),
-    ('pages/designer-joel-iskowitz.html', '07-designer-joel-iskowitz.html'),
-    ('pages/first-in-class.html', '08-first-in-class.html'),
-    ('pages/info-template.html', '09-info-page-template.html'),
-    ('pages/states.html', '10-component-states.html'),
+    ('pages/content-2025-collection.html', '03-collection-2025.html'),
+    ('pages/content-collections.html', '04-collection-2026.html'),
+    ('pages/product-2026-1oz-gold.html', '05-product-2026-1oz-gold.html'),
+    ('pages/content-modern-redbacks.html', '06-modern-redbacks.html'),
+    ('pages/product-redback-5cg.html', '07-product-redback-5cg.html'),
+    ('pages/designer-joel-iskowitz.html', '08-designer-joel-iskowitz.html'),
+    ('pages/first-in-class.html', '09-first-in-class.html'),
+    ('pages/info-template.html', '10-info-page-template.html'),
+    ('pages/states.html', '11-component-states.html'),
 ]
 MOBILE = [
-    ('pages/home.html', '11-home-mobile.html'),
-    ('pages/content-commemorative-series.html', '12-commemorative-series-mobile.html'),
-    ('pages/content-collections.html', '13-collection-2026-mobile.html'),
-    ('pages/product-2026-1oz-gold.html', '14-product-2026-mobile.html'),
-    ('pages/content-modern-redbacks.html', '15-modern-redbacks-mobile.html'),
-    ('pages/product-redback-5cg.html', '16-product-redback-5cg-mobile.html'),
-    ('pages/designer-joel-iskowitz.html', '17-designer-mobile.html'),
-    ('pages/first-in-class.html', '18-first-in-class-mobile.html'),
+    ('pages/home.html', '12-home-mobile.html'),
+    ('pages/content-commemorative-series.html', '13-commemorative-series-mobile.html'),
+    ('pages/content-2025-collection.html', '14-collection-2025-mobile.html'),
+    ('pages/content-collections.html', '15-collection-2026-mobile.html'),
+    ('pages/product-2026-1oz-gold.html', '16-product-2026-mobile.html'),
+    ('pages/content-modern-redbacks.html', '17-modern-redbacks-mobile.html'),
+    ('pages/product-redback-5cg.html', '18-product-redback-5cg-mobile.html'),
+    ('pages/designer-joel-iskowitz.html', '19-designer-mobile.html'),
+    ('pages/first-in-class.html', '20-first-in-class-mobile.html'),
 ]
 
 FLAT_NAV = ('<nav class="mainnav" aria-label="Primary">'
@@ -195,20 +197,21 @@ open(f'{DIST}/README.txt', 'w', encoding='utf-8').write(
     "TxBD Commemorative — Figma import bundle\n\n"
     "Import this zip in html.to.design (File tab -> upload .zip).\n"
     "Set the import viewport to Desktop (1440). One import brings in every page.\n\n"
-    "Desktop (00-10):\n"
+    "Desktop (00-11):\n"
     "  00 Brand guidelines (tokens & components)\n"
     "  01 Home\n"
     "  02 The Commemorative Series\n"
-    "  03 The 2026 Lone Star Collection\n"
-    "  04 Product — 2026 1 oz Gold Lone Star\n"
-    "  05 Modern Redbacks\n"
-    "  06 Product — 5cg Modern Redback\n"
-    "  07 Designer — Joel Iskowitz\n"
-    "  08 First in Class (state oversight)\n"
-    "  09 Info / Educational page template\n"
-    "  10 Component states (hover/open/active)\n\n"
-    "Mobile (11-18): Home, Commemorative Series, 2026 Collection, Product 2026,\n"
-    "Modern Redbacks, Product 5cg Redback, Designer, First in Class.\n"
+    "  03 The 2025 Inaugural Collection\n"
+    "  04 The 2026 Lone Star Collection\n"
+    "  05 Product — 2026 1 oz Gold Lone Star\n"
+    "  06 Modern Redbacks\n"
+    "  07 Product — 5cg Modern Redback\n"
+    "  08 Designer — Joel Iskowitz\n"
+    "  09 First in Class (state oversight)\n"
+    "  10 Info / Educational page template\n"
+    "  11 Component states (hover/open/active)\n\n"
+    "Mobile (12-20): Home, Commemorative Series, 2025 Collection, 2026 Collection,\n"
+    "Product 2026, Modern Redbacks, Product 5cg Redback, Designer, First in Class.\n"
     "These are hard-framed to 390px so they import as phone layouts in the same pass.\n")
 
 # ---------- zip ----------

@@ -16,6 +16,7 @@ Series**. Built in HTML/CSS, delivered to Figma via **html.to.design** (a single
 |---|---|
 | `home.html` | Homepage — hero, collections, splits, FAQ, where-to-buy |
 | `content-commemorative-series.html` | The Commemorative Series — program overview |
+| `content-2025-collection.html` | The 2025 Inaugural Collection — the historic first release |
 | `content-collections.html` | The 2026 Lone Star Collection — overview + product cards |
 | `product-2026-1oz-gold.html` | Product Detail — gallery, specs, retailer block, **designer band** |
 | `content-modern-redbacks.html` | Modern Redbacks — the gold bills of Texas |
